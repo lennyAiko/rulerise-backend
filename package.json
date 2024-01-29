@@ -16,6 +16,7 @@
     "sails": "^1.5.2",
     "sails-hook-orm": "^4.0.0",
     "sails-hook-sockets": "^2.0.0",
+    "sails-mongo": "^2.1.0",
     "skipper": "^0.9.4"
   },
   "devDependencies": {

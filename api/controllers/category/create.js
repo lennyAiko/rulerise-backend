@@ -40,7 +40,7 @@ module.exports = {
         maxBytes: 2000000, //2mb,
         dirname: require('path').resolve(
           sails.config.appPath,
-          '.tmp/public/images'
+          '.tmp/public/pictures/'
         ),
         saveAs: function (file, cb) {
           randomName = `${randomStrings()}_${file.filename}`
@@ -52,7 +52,7 @@ module.exports = {
           return this.res.status(500).json({ message: 'Error uploading file' })
         }
 
-        imgUrl = require('util').format(`${UPLOAD_URL}/images/${randomName}`)
+        imgUrl = require('util').format(`${UPLOAD_URL}/pictures/${randomName}`)
 
         await Category.create({ name, image: imgUrl })
       }
