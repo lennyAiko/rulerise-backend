@@ -7,7 +7,7 @@ export default function Create() {
 
   const { data, setData, post, progress } = useForm({
     name: '',
-    image: null,
+    image: '',
   })
 
   useEffect(() => {
@@ -43,15 +43,24 @@ export default function Create() {
           />
 
           <label className="" htmlFor="file">
-            Upload category icon
+            Paste category icon link
           </label>
           <input
+            type="text"
+            value={data.image}
+            // @ts-ignore
+            onChange={(e) => setData('image', e.target.value)}
+            id="file"
+            name="file"
+            className="border"
+          />
+          {/* <input
             type="file"
             id="file"
             name="file"
             // @ts-ignore
             onChange={(e) => setData('image', e.target.files[0])}
-          />
+          /> */}
 
           <button type="submit" disabled={disabledButton}>
             Submit

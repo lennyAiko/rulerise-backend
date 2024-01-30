@@ -1,9 +1,13 @@
-import AppLayout from '@/components/AppLayout'
-import { Link } from '@inertiajs/react'
+import { Link, router } from '@inertiajs/react'
 import CategoryLayout from './_components/CategoryLayout'
+import { useEffect } from 'react'
 
-export default function Index({ categories }) {
-  console.log(categories)
+export default function Index({ categories, deleted }) {
+  useEffect(() => {
+    if (deleted) {
+      router.visit('/category')
+    }
+  }, [deleted, categories])
   return (
     <CategoryLayout>
       <div className="flex flex-col gap-2">
@@ -16,8 +20,22 @@ export default function Index({ categories }) {
         {categories.length > 0 ? (
           categories.map((category) => (
             <div className="" key={category.id}>
-              <p key={category.id}>{category.name}</p>
-              <img src={category.image} alt="category image" />
+              <Link href={`/category/${category.id}`}>
+                <p key={category.id}>{category.name}</p>
+              </Link>
+              <img
+                src={category.image}
+                alt="category image"
+                className="h-24 w-24"
+              />
+              <button
+                onClick={(e) => {
+                  e.preventDefault()
+                  router.delete(`/category/${category.id}`)
+                }}
+              >
+                Delete
+              </button>
             </div>
           ))
         ) : (

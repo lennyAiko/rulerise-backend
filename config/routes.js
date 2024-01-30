@@ -25,6 +25,9 @@ module.exports.routes = {
   'POST /category/create': 'category/create',
   'GET /category/create': 'category/view-create',
   'GET /category': 'category/fetch',
+  'PATCH /category/:id': 'category/update',
+  'GET /category/:id': 'category/view-update',
+  'DELETE /category/:id': 'category/delete',
 
   // API
   'GET /api/category': 'category/api/fetch',

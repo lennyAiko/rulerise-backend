@@ -22,6 +22,10 @@ module.exports = {
       type: 'string',
       required: true,
     },
+    image: {
+      type: 'string',
+      required: true,
+    },
   },
 
   exits: {
@@ -30,33 +34,35 @@ module.exports = {
     },
   },
 
-  fn: async function ({ name }) {
+  fn: async function ({ name, image }) {
     // Create category.
 
-    let randomName
+    // let randomName
 
-    this.req.file('image').upload(
-      {
-        maxBytes: 2000000, //2mb,
-        dirname: require('path').resolve(
-          sails.config.appPath,
-          '.tmp/public/pictures/'
-        ),
-        saveAs: function (file, cb) {
-          randomName = `${randomStrings()}_${file.filename}`
-          cb(null, randomName)
-        },
-      },
-      async function whenDone(err, uploadedFiles) {
-        if (err) {
-          return this.res.status(500).json({ message: 'Error uploading file' })
-        }
+    // this.req.file('image').upload(
+    //   {
+    //     maxBytes: 2000000, //2mb,
+    //     dirname: require('path').resolve(
+    //       sails.config.appPath,
+    //       '.tmp/public/pictures/'
+    //     ),
+    //     saveAs: function (file, cb) {
+    //       randomName = `${randomStrings()}_${file.filename}`
+    //       cb(null, randomName)
+    //     },
+    //   },
+    //   async function whenDone(err, uploadedFiles) {
+    //     if (err) {
+    //       return this.res.status(500).json({ message: 'Error uploading file' })
+    //     }
 
-        imgUrl = require('util').format(`${UPLOAD_URL}/pictures/${randomName}`)
+    //     imgUrl = require('util').format(`${UPLOAD_URL}/pictures/${randomName}`)
 
-        await Category.create({ name, image: imgUrl })
-      }
-    )
+    //     await Category.create({ name, image: imgUrl })
+    //   }
+    // )
+
+    await Category.create({ name, image })
 
     // All done.
     return '/category'
