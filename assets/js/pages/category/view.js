@@ -14,7 +14,6 @@ const update = ({ category, updated }) => {
   }
 
   useEffect(() => {
-    console.log(updated)
     if (updated) {
       router.visit('/category')
     }

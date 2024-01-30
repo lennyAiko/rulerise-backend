@@ -1,28 +1,29 @@
 module.exports = {
-
-
   friendlyName: 'Update',
-
 
   description: 'Update faqs.',
 
-
   inputs: {
-
+    question: {
+      type: 'string',
+      required: true,
+    },
+    answer: {
+      type: 'string',
+      required: true,
+    },
   },
 
+  exits: {},
 
-  exits: {
+  fn: async function ({ question, answer }) {
+    const faq = await Faqs.updateOne({ id: this.req.params.id }).set({
+      question,
+      answer,
+    })
 
-  },
-
-
-  fn: async function (inputs) {
-
+    const updated = true
     // All done.
-    return;
-
-  }
-
-
-};
+    return sails.inertia.render('faqs/view', { faq, updated })
+  },
+}

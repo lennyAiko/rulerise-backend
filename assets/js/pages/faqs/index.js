@@ -15,7 +15,7 @@ export default function Index({ faqs }) {
         {faqs.length > 0 ? (
           faqs.map((faq) => (
             <div className="" key={faq.id}>
-              <Link href={`/faq/${faq.id}`}>
+              <Link href={`/faqs/${faq.id}`}>
                 <p key={faq.id}>{faq.question}</p>
               </Link>
               <p>{faq.answer}</p>
