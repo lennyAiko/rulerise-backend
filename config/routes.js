@@ -32,7 +32,10 @@ module.exports.routes = {
   'GET /faqs': 'faqs/fetch',
   'POST /faqs/create': 'faqs/create',
   'GET /faqs/create': 'faqs/view-create',
+  'GET /faqs/:id': 'faqs/view-update',
+  'PATCH /faqs/:id': 'faqs/update',
 
   // API
   'GET /api/category': 'category/api/fetch',
+  'GET /api/faqs': 'faqs/api/fetch',
 }

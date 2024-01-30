@@ -8,7 +8,7 @@ export default function Index({ faqs }) {
       <div className="flex flex-col gap-2">
         <h1 className="font-bold">FAQ</h1>
 
-        <Link href="/faq/create" className="m-5 border p-2">
+        <Link href="/faqs/create" className="m-5 border p-2">
           Add
         </Link>
 
