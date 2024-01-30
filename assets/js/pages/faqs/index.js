@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import FaqLayout from './_components/FaqLayout'
-import { Link } from '@inertiajs/react'
+import { Link, router } from '@inertiajs/react'
 
-export default function Index({ faqs }) {
+export default function Index({ faqs, deleted }) {
+  useEffect(() => {
+    if (deleted) {
+      router.visit('/faqs')
+    }
+  }, [deleted, faqs])
   return (
     <FaqLayout>
       <div className="flex flex-col gap-2">
@@ -22,7 +27,7 @@ export default function Index({ faqs }) {
               <button
                 onClick={(e) => {
                   e.preventDefault()
-                  router.delete(`/category/${category.id}`)
+                  router.delete(`/faqs/${faq.id}`)
                 }}
               >
                 Delete
