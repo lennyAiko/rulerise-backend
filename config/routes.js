@@ -19,7 +19,6 @@ module.exports.routes = {
    *                                                                          *
    ***************************************************************************/
   'GET /': 'dashboard/index',
-  'GET /example': 'example/index',
 
   // Category
   'POST /category/create': 'category/create',
@@ -28,6 +27,11 @@ module.exports.routes = {
   'PATCH /category/:id': 'category/update',
   'GET /category/:id': 'category/view-update',
   'DELETE /category/:id': 'category/delete',
+
+  // Faqs
+  'GET /faqs': 'faqs/fetch',
+  'POST /faqs/create': 'faqs/create',
+  'GET /faqs/create': 'faqs/view-create',
 
   // API
   'GET /api/category': 'category/api/fetch',
