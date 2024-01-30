@@ -34,6 +34,7 @@ module.exports.routes = {
   'GET /faqs/create': 'faqs/view-create',
   'GET /faqs/:id': 'faqs/view-update',
   'PATCH /faqs/:id': 'faqs/update',
+  'DELETE /faqs/:id': 'faqs/delete',
 
   // API
   'GET /api/category': 'category/api/fetch',
