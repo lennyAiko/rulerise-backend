@@ -15,8 +15,7 @@ module.exports = {
   fn: async function (inputs, exits) {
     await Category.destroyOne({ id: this.req.params.id })
     // All done.
-    const categories = await Category.find({})
-    // return exits.success('/category')
+
     return sails.inertia.location('/category')
   },
 }

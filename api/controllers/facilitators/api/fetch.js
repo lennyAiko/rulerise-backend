@@ -9,18 +9,18 @@ module.exports = {
 
   fn: async function (inputs) {
     let message
-    let faqs
+    let facilitators
 
     try {
       // @ts-ignore
-      faqs = await Faqs.find({})
-      message = 'Successfully fetched faqs'
+      facilitators = await Facilitators.find({})
+      message = 'Successfully fetched facilitators'
     } catch (err) {
       console.log(err)
-      message = 'Failed to fetch faqs'
+      message = 'Failed to fetch facilitators'
     }
 
     // All done.
-    return { message, data: faqs }
+    return { message, data: facilitators }
   },
 }

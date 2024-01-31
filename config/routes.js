@@ -36,7 +36,21 @@ module.exports.routes = {
   'PATCH /faqs/:id': 'faqs/update',
   'DELETE /faqs/:id': 'faqs/delete',
 
+  // Facilitator
+  'GET /facilitators': 'facilitators/fetch',
+  'POST /facilitators/create': 'facilitators/create',
+  'GET /facilitators/create': 'facilitators/view-create',
+  'GET /facilitators/:id': 'facilitators/view-update',
+  'PATCH /facilitators/:id': 'facilitators/update',
+  'DELETE /facilitators/:id': 'facilitators/delete',
+
+  // Courses
+  'GET /courses': 'courses/fetch',
+  'POST /courses/create': 'courses/create',
+  'GET /courses/create': 'courses/view-create',
+
   // API
   'GET /api/category': 'category/api/fetch',
   'GET /api/faqs': 'faqs/api/fetch',
+  'GET /api/facilitators': 'facilitators/api/fetch',
 }

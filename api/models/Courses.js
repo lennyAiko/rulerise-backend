@@ -44,9 +44,11 @@ module.exports = {
       type: 'ref',
       required: true,
     },
+
+    // associations
     facilitators: {
-      type: 'ref',
-      required: true,
+      collection: 'facilitators',
+      via: 'courses',
     },
     category: {
       model: 'category',
