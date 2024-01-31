@@ -15,5 +15,10 @@ module.exports = {
     image: {
       type: 'string',
     },
+
+    courses: {
+      collection: 'courses',
+      via: 'category',
+    },
   },
 }

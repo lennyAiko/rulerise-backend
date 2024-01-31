@@ -1,4 +1,3 @@
-import React from 'react'
 import FaqLayout from './_components/FaqLayout'
 import { useForm } from '@inertiajs/react'
 

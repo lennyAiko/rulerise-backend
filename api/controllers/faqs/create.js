@@ -21,6 +21,7 @@ module.exports = {
   },
 
   fn: async function ({ question, answer }) {
+    // @ts-ignore
     await Faqs.create({
       question,
       answer,

@@ -1,8 +1,7 @@
-import { router, useForm } from '@inertiajs/react'
+import { useForm } from '@inertiajs/react'
 import CategoryLayout from './_components/CategoryLayout'
-import { useEffect } from 'react'
 
-const update = ({ category, updated }) => {
+const update = ({ category }) => {
   const { data, setData, patch } = useForm({
     name: category.name,
     image: category.image,
@@ -12,12 +11,6 @@ const update = ({ category, updated }) => {
     e.preventDefault()
     patch(`/category/${category.id}`)
   }
-
-  useEffect(() => {
-    if (updated) {
-      router.visit('/category')
-    }
-  }, [updated, category])
 
   return (
     <CategoryLayout>

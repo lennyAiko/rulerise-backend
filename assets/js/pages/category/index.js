@@ -1,13 +1,7 @@
 import { Link, router } from '@inertiajs/react'
 import CategoryLayout from './_components/CategoryLayout'
-import { useEffect } from 'react'
 
-export default function Index({ categories, deleted }) {
-  useEffect(() => {
-    if (deleted) {
-      router.visit('/category')
-    }
-  }, [deleted, categories])
+export default function Index({ categories }) {
   return (
     <CategoryLayout>
       <div className="flex flex-col gap-2">

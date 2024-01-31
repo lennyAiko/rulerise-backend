@@ -16,9 +16,7 @@ module.exports = {
       return this.res.notFound()
     }
 
-    const updated = false
-
     // Respond with view.
-    return sails.inertia.render('category/view', { category, updated })
+    return sails.inertia.render('category/view', { category })
   },
 }

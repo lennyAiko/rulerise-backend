@@ -1,8 +1,9 @@
+// @ts-ignore
 import React, { useEffect } from 'react'
 import FaqLayout from './_components/FaqLayout'
-import { router, useForm } from '@inertiajs/react'
+import { useForm } from '@inertiajs/react'
 
-const view = ({ faq, updated }) => {
+const view = ({ faq }) => {
   const { data, setData, patch } = useForm({
     question: faq.question,
     answer: faq.answer,
@@ -13,12 +14,6 @@ const view = ({ faq, updated }) => {
     patch(`/faqs/${faq.id}`)
   }
 
-  useEffect(() => {
-    if (updated) {
-      router.visit('/faqs')
-    }
-  }, [updated, faq])
-
   return (
     <FaqLayout>
       <h2>Update faq</h2>
@@ -26,11 +21,13 @@ const view = ({ faq, updated }) => {
         <input
           type="text"
           value={data.question}
+          // @ts-ignore
           onChange={(e) => setData('question', e.target.value)}
         />
         <input
           type="text"
           value={data.answer}
+          // @ts-ignore
           onChange={(e) => setData('answer', e.target.value)}
         />
         <button type="submit">Update</button>

@@ -17,18 +17,17 @@ module.exports = {
 
   exits: {
     success: {
-      responseType: 'redirect',
+      responseType: 'myRedirect',
     },
   },
 
-  fn: async function ({ name, image }) {
+  fn: async function ({ name, image }, exits) {
     const category = await Category.updateOne({ id: this.req.params.id }).set({
       name,
       image,
     })
-    const updated = true
     // All done.
-    return sails.inertia.render('category/view', { category, updated })
-    // return '/category'
+    // return sails.inertia.render('category/view', { category, updated })
+    return sails.inertia.location('/category')
   },
 }

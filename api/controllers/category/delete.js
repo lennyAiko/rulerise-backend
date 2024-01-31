@@ -6,13 +6,17 @@ module.exports = {
 
   inputs: {},
 
-  exits: {},
+  exits: {
+    success: {
+      responseType: 'myRedirect',
+    },
+  },
 
-  fn: async function (inputs) {
+  fn: async function (inputs, exits) {
     await Category.destroyOne({ id: this.req.params.id })
     // All done.
     const categories = await Category.find({})
-    const deleted = true
-    return sails.inertia.render('category', { categories, deleted })
+    // return exits.success('/category')
+    return sails.inertia.location('/category')
   },
 }

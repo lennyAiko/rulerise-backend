@@ -22,8 +22,7 @@ module.exports = {
       answer,
     })
 
-    const updated = true
     // All done.
-    return sails.inertia.render('faqs/view', { faq, updated })
+    return sails.inertia.location('/faqs')
   },
 }
