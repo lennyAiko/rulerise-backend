@@ -37,14 +37,15 @@ module.exports = {
     // @ts-ignore
     const facilitator = await Facilitators.updateOne({
       id: this.req.params.id,
+    }).set({
+      fullName,
+      image,
+      description,
+      socials,
     })
-      .set({
-        fullName,
-        image,
-        description,
-        socials,
-      })
-      .addToCollection('courses', courses)
+
+    // @ts-ignore
+    await Facilitators.addToCollection(facilitator.id, 'courses', courses)
 
     // All done.
     return sails.inertia.location('/facilitators')

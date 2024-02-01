@@ -4,9 +4,6 @@ module.exports = {
   description: 'Display "Update" page.',
 
   exits: {
-    success: {
-      responseType: 'myRedirect',
-    },
     notFound: {
       responseType: 'notFound',
     },
@@ -19,7 +16,7 @@ module.exports = {
     const facilitator = await Facilitators.findOne({ id: _id })
 
     if (!facilitator) {
-      return exits.notFound('Could not find facilitator')
+      throw exits.notFound('Could not find facilitator')
     }
 
     // Respond with view.

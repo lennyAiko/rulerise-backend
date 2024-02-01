@@ -12,12 +12,22 @@ export default function Index({ facilitators }) {
         </Link>
 
         {facilitators.length > 0 ? (
-          facilitators.map((facilitator) => (
-            <div className="" key={facilitator.id}>
+          facilitators.map((facilitator, index) => (
+            <div className="" key={index}>
               <Link href={`/facilitators/${facilitator.id}`}>
-                <p key={facilitator.id}>{facilitator.question}</p>
+                <p key={facilitator.id}>{facilitator.fullName}</p>
               </Link>
-              <p>{facilitator.answer}</p>
+              <img
+                src={facilitator.image}
+                alt="facilitator image"
+                className="h-8 w-8 rounded-full"
+              />
+              <p>{facilitator.description}</p>
+              {facilitator.socials.map((social, index) => (
+                <p key={index}>
+                  {social.platform} -{social.value}
+                </p>
+              ))}
               <button
                 onClick={(e) => {
                   e.preventDefault()

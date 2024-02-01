@@ -9,7 +9,7 @@ module.exports = {
   exits: {},
 
   fn: async function (inputs) {
-    await facilitators.destroyOne({ id: this.req.params.id })
+    await Facilitators.destroyOne({ id: this.req.params.id })
 
     // All done.
     return sails.inertia.location('/facilitators')

@@ -4,7 +4,6 @@ import Sidebar from '@/components/Sidebar'
 import { Link } from '@inertiajs/react'
 
 export default function Index({ name, models, model_count }) {
-  console.log(models)
   return (
     <AppLayout>
       <div className="flex gap-5">

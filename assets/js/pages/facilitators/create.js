@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react'
 import FacilitatorLayout from './_components/FacilitatorLayout'
 import { useForm } from '@inertiajs/react'
+import { socials } from './_components/data'
 
 const create = () => {
-  const socials = ['Twitter', 'Facebook', 'LinkedIn', 'Instagram']
-
   const [socialFields, setSocialFields] = useState([{ value: '' }])
 
   const { data, setData, post } = useForm({
@@ -13,14 +12,15 @@ const create = () => {
     description: '',
     socials: [],
     courses: [],
+    category: '',
+    facilitators: [],
   })
 
   useEffect(() => {
     setData('socials', socialFields)
-    console.log(socialFields)
-  }, socialFields)
+  }, [socialFields])
 
-  const handleAddInput = (e, index) => {
+  const handleAddInput = (e) => {
     e.preventDefault()
     if (socialFields.length === 4) return
     setSocialFields([...socialFields, { value: '' }])
@@ -28,10 +28,9 @@ const create = () => {
 
   const handleInputChange = (index, event) => {
     const newSocialInputs = [...socialFields]
-    newSocialInputs[index].key = socials[index]
+    newSocialInputs[index].platform = socials[index]
     newSocialInputs[index].value = event.target.value
     setSocialFields(newSocialInputs)
-    setData('socials', newSocialInputs)
   }
 
   const submit = (e) => {

@@ -8,7 +8,11 @@ module.exports = {
   },
 
   fn: async function () {
+    // @ts-ignore
+    const facilitators = await Facilitators.find({})
+    // @ts-ignore
+    const categories = await Category.find({})
     // Respond with view.
-    return sails.inertia.render('courses/create')
+    return sails.inertia.render('courses/create', { facilitators, categories })
   },
 }
