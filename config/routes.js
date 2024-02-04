@@ -52,9 +52,17 @@ module.exports.routes = {
   'PATCH /courses/:id': 'courses/update',
   'DELETE /courses/:id': 'courses/delete',
 
+  // Applications
+  'GET /applications': 'applications/fetch',
+
+  // Contact
+  'GET /contact': 'contact/fetch',
+
   // API
   'GET /api/category': 'category/api/fetch',
   'GET /api/faqs': 'faqs/api/fetch',
   'GET /api/facilitators': 'facilitators/api/fetch',
   'GET /api/courses': 'courses/api/fetch',
+  'POST /api/application': 'applications/api/create',
+  'POST /api/contact': 'contact/api/create',
 }

@@ -13,7 +13,7 @@ module.exports = {
     return sails.inertia.render('index', {
       name: 'Rulerise | Admin',
       models,
-      model_count: models.length,
+      model_count: models.length - 1,
     })
   },
 }
