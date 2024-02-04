@@ -48,9 +48,13 @@ module.exports.routes = {
   'GET /courses': 'courses/fetch',
   'POST /courses/create': 'courses/create',
   'GET /courses/create': 'courses/view-create',
+  'GET /courses/:id': 'courses/view-update',
+  'PATCH /courses/:id': 'courses/update',
+  'DELETE /courses/:id': 'courses/delete',
 
   // API
   'GET /api/category': 'category/api/fetch',
   'GET /api/faqs': 'faqs/api/fetch',
   'GET /api/facilitators': 'facilitators/api/fetch',
+  'GET /api/courses': 'courses/api/fetch',
 }

@@ -14,13 +14,13 @@ export default function Index({ courses }) {
         {courses.length > 0 ? (
           courses.map((course) => (
             <div className="" key={course.id}>
-              <Link href={`/course/${course.id}`}>
-                <p key={course.id}>{course.name}</p>
+              <Link href={`/courses/${course.id}`}>
+                <p key={course.id}>{course.title}</p>
               </Link>
               <button
                 onClick={(e) => {
                   e.preventDefault()
-                  router.delete(`/course/${course.id}`)
+                  router.delete(`/courses/${course.id}`)
                 }}
               >
                 Delete

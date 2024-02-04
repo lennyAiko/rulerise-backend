@@ -7,9 +7,7 @@ module.exports = {
   inputs: {},
 
   exits: {
-    success: {
-      responseType: 'myRedirect',
-    },
+    success: {},
   },
 
   fn: async function (inputs, exits) {

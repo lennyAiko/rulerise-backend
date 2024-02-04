@@ -1,7 +1,7 @@
 module.exports = {
-  friendlyName: 'Create',
+  friendlyName: 'Update',
 
-  description: 'Create courses.',
+  description: 'Update courses.',
 
   inputs: {
     image: {
@@ -51,34 +51,27 @@ module.exports = {
 
   exits: {
     success: {
-      responseType: 'redirect',
-    },
-    serverError: {
-      responseType: 'internalServerError',
+      responseType: 'myRedirect',
     },
   },
 
   fn: async function (inputs, exits) {
-    try {
-      // @ts-ignore
-      await Courses.create({
-        image: inputs.image,
-        title: inputs.title,
-        description: inputs.description,
-        overview: inputs.overview,
-        duration: inputs.duration,
-        learningMode: inputs.learningMode,
-        fee: inputs.fee,
-        level: inputs.level,
-        topics: inputs.topics,
-        facilitator: inputs.facilitator,
-        category: inputs.category,
-      })
-    } catch (err) {
-      sails.log(err)
-      return exits.serverError('Could not create course')
-    }
+    // @ts-ignore
+    const course = await Courses.updateOne({ id: this.req.params.id }).set({
+      image: inputs.image,
+      title: inputs.title,
+      description: inputs.description,
+      overview: inputs.overview,
+      duration: inputs.duration,
+      learningMode: inputs.learningMode,
+      fee: inputs.fee,
+      level: inputs.level,
+      topics: inputs.topics,
+      facilitators: inputs.facilitator,
+      category: inputs.category,
+    })
+
     // All done.
-    return exits.success('/courses')
+    return sails.inertia.location('/courses')
   },
 }
