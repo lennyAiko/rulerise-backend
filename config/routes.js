@@ -53,10 +53,12 @@ module.exports.routes = {
   'DELETE /courses/:id': 'courses/delete',
 
   // Applications
-  'GET /applications': 'applications/fetch',
+  'GET /application': 'applications/fetch',
+  'GET /application/:id': 'applications/view',
 
   // Contact
   'GET /contact': 'contact/fetch',
+  'GET /contact/:id': 'contact/view',
 
   // API
   'GET /api/category': 'category/api/fetch',

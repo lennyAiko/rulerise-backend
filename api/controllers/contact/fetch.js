@@ -1,28 +1,17 @@
 module.exports = {
-
-
   friendlyName: 'Fetch',
-
 
   description: 'Fetch contact.',
 
+  inputs: {},
 
-  inputs: {
-
-  },
-
-
-  exits: {
-
-  },
-
+  exits: {},
 
   fn: async function (inputs) {
+    // @ts-ignore
+    const contacts = await Contact.find({})
 
     // All done.
-    return;
-
-  }
-
-
-};
+    return sails.inertia.render('contact/index', { contacts })
+  },
+}

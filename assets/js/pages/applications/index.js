@@ -1,15 +1,20 @@
-import AppLayout from '@/components/AppLayout'
+import { Link } from '@inertiajs/react'
+import ApplicationLayout from './_component/ApplicationLayout'
 
 export default function Index({ applications }) {
   return (
-    <AppLayout>
-      <h1>Applications</h1>
+    <ApplicationLayout>
+      <h1 className="font-bold">Applications</h1>
 
       <ul>
         {applications.map((application) => (
-          <li key={application.id}>{application.fullName}</li>
+          <li key={application.id}>
+            <Link href={`/applications/${application.id}`}>
+              {application.fullName}
+            </Link>
+          </li>
         ))}
       </ul>
-    </AppLayout>
+    </ApplicationLayout>
   )
 }
