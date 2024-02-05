@@ -9,8 +9,8 @@ export default function Index({ applications }) {
       <ul>
         {applications.map((application) => (
           <li key={application.id}>
-            <Link href={`/applications/${application.id}`}>
-              {application.fullName}
+            <Link href={`/application/${application.id}`}>
+              {application.firstName} - {application.lastName}
             </Link>
           </li>
         ))}

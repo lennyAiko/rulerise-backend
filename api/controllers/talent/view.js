@@ -1,7 +1,7 @@
 module.exports = {
   friendlyName: 'View',
 
-  description: 'View applications.',
+  description: 'View talent.',
 
   inputs: {},
 
@@ -17,12 +17,12 @@ module.exports = {
 
   fn: async function (inputs, exits) {
     // @ts-ignore
-    const application = await Application.findOne({ id: this.req.params.id })
-    if (!application) {
-      return exits.notFound({ message: "Couldn't find application" })
-    }
+    const talent = await Talent.findOne({ id: this.req.params.id })
 
+    if (!talent) {
+      return exits.notFound({ message: "Couldn't find talent" })
+    }
     // All done.
-    return sails.inertia.render('applications/view', { application })
+    return sails.inertia.render('talent/view', { talent })
   },
 }

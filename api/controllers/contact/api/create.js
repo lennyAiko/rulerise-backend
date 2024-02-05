@@ -6,7 +6,6 @@ module.exports = {
   inputs: {
     fullName: {
       type: 'string',
-      columnName: 'full_name',
     },
 
     email: {

@@ -60,11 +60,16 @@ module.exports.routes = {
   'GET /contact': 'contact/fetch',
   'GET /contact/:id': 'contact/view',
 
+  // Talent
+  'GET /talent': 'talent/fetch',
+  'GET /talent/:id': 'talent/view',
+
   // API
-  'GET /api/category': 'category/api/fetch',
+  'GET /api/courses': 'courses/api/fetch',
+  'GET /api/categories': 'category/api/fetch',
   'GET /api/faqs': 'faqs/api/fetch',
   'GET /api/facilitators': 'facilitators/api/fetch',
-  'GET /api/courses': 'courses/api/fetch',
-  'POST /api/application': 'applications/api/create',
-  'POST /api/contact': 'contact/api/create',
+  'POST /api/applications': 'applications/api/create',
+  'POST /api/contacts': 'contact/api/create',
+  'POST /api/talents': 'talent/api/create',
 }

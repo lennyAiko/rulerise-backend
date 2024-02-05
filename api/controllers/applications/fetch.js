@@ -10,7 +10,6 @@ module.exports = {
   fn: async function (inputs) {
     // @ts-ignore
     const applications = await Application.find({})
-
     // All done.
     return sails.inertia.render('applications/index', { applications })
   },
