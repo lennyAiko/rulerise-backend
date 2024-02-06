@@ -7,6 +7,6 @@ createInertiaApp({
   setup({ el, App, props }) {
     createRoot(el).render(<App {...props} />)
   },
-  progress: { color: '#fca5a5' },
+  progress: { color: '#F26659' },
   title: (title) => `${title} | Rulerise`,
 })

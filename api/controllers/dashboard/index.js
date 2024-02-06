@@ -10,10 +10,9 @@ module.exports = {
   fn: async function () {
     // @ts-ignore
     const models = await sails.helpers.getModels()
+    sails.inertia.share('models', models)
     return sails.inertia.render('index', {
-      name: 'Rulerise | Admin',
-      models,
-      model_count: models.length - 1,
+      name: 'Admin',
     })
   },
 }
