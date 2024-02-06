@@ -17,7 +17,7 @@ const AppLayout = ({ children, title = 'Rulerise page' }) => {
                 <div className="flex flex-wrap items-center justify-center lg:flex-col lg:items-start lg:justify-start lg:p-2">
                   {models
                     // @ts-ignore
-                    .map((model, index) => (
+                    ?.map((model, index) => (
                       <Link
                         href={`/${model ? model.toLowerCase() : ''}`}
                         key={index}
