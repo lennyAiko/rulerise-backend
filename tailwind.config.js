@@ -5,6 +5,10 @@ module.exports = {
       colors: {
         primary: '#F26659',
       },
+      fontFamily: {
+        outfit: ['Outfit', 'sans-serif'],
+        euclid: ['Euclid Circular A', 'sans-serif'],
+      },
     },
   },
   plugins: [],

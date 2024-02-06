@@ -8,7 +8,7 @@ const AppLayout = ({ children, title = 'Rulerise page' }) => {
   return (
     <>
       <Head title={title}></Head>
-      <div className="flex min-h-screen flex-col">
+      <div className="flex min-h-screen flex-col font-outfit">
         <Header />
         <div className="grid grid-cols-8">
           <div className="col-span-full lg:col-span-6 lg:col-start-2">
