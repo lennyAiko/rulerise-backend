@@ -4,9 +4,9 @@ import ApplicationLayout from './_component/ApplicationLayout'
 export default function Index({ applications }) {
   return (
     <ApplicationLayout>
-      <h1 className="mb-2 font-bold">Applications</h1>
+      <h1 className="m-2 mb-2 font-bold">Applications</h1>
 
-      <ul>
+      <ul className="space-y-3 px-4">
         {applications.map((application, index) => (
           <div key={index}>
             <li

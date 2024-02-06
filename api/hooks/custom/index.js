@@ -19,10 +19,14 @@ module.exports = function defineCustomHook(sails) {
         'GET /*': {
           skipAssets: true,
           fn: async function (req, res, proceed) {
-            sails.inertia.flushShared('models')
-            const models = await sails.helpers.getModels()
-            sails.inertia.share('models', models)
-            return proceed()
+            if (!req.session.models) {
+              req.session.models = await sails.helpers.getModels()
+              sails.inertia.share('models', req.session.models)
+              return proceed()
+            } else {
+              sails.inertia.share('models', req.session.models)
+              return proceed()
+            }
           },
         },
       },

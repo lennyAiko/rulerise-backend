@@ -55,6 +55,7 @@ module.exports.routes = {
   // Applications
   'GET /application': 'applications/fetch',
   'GET /application/:id': 'applications/view',
+  'DELETE /application/:id': 'applications/delete',
 
   // Contact
   'GET /contact': 'contact/fetch',

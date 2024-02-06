@@ -33,7 +33,7 @@ const Header = () => {
       </div>
 
       <div className="">
-        <div className="rounded-full bg-primary p-1.5 text-sm font-bold text-white md:p-2 lg:text-base">
+        <div className="rounded-full bg-primary p-1.5 text-sm text-white md:p-2 lg:text-base lg:font-bold">
           L.C
         </div>
       </div>
