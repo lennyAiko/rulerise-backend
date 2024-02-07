@@ -1,30 +1,32 @@
 import { Link, router } from '@inertiajs/react'
 import CoursesLayout from './_components/CoursesLayout'
+import { TiPlus } from 'react-icons/ti'
 
 export default function Index({ courses }) {
   return (
     <CoursesLayout>
       <div className="flex flex-col gap-2">
-        <h1 className="font-bold">Courses</h1>
+        <div className="flex items-center gap-2">
+          <h1 className="my-2 mb-2 font-bold">Courses</h1>
 
-        <Link href="/courses/create" className="m-5 border p-2">
-          Add
-        </Link>
+          <Link href="/courses/create" className="w-fit p-1">
+            <TiPlus />
+          </Link>
+        </div>
 
         {courses.length > 0 ? (
           courses.map((course) => (
-            <div className="" key={course.id}>
-              <Link href={`/courses/${course.id}`}>
+            <div className="space-y-2 lg:mx-4" key={course.id}>
+              <div className="flex justify-between">
                 <p key={course.id}>{course.title}</p>
-              </Link>
-              <button
-                onClick={(e) => {
-                  e.preventDefault()
-                  router.delete(`/courses/${course.id}`)
-                }}
-              >
-                Delete
-              </button>
+                <Link
+                  href={`/courses/${course.id}`}
+                  className="rounded-lg bg-primary px-2 py-0.5 text-white"
+                >
+                  View
+                </Link>
+              </div>
+              <hr />
             </div>
           ))
         ) : (

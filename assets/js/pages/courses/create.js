@@ -1,6 +1,8 @@
 import { useForm } from '@inertiajs/react'
 import CoursesLayout from './_components/CoursesLayout'
 import { useEffect, useState } from 'react'
+import TextInput from '@/components/TextInput'
+import TextareaInput from '@/components/TextareaInput'
 
 const create = ({ facilitators, categories }) => {
   const [topicFields, setTopicFields] = useState([{ value: '' }])
@@ -58,70 +60,41 @@ const create = ({ facilitators, categories }) => {
   return (
     <CoursesLayout>
       <div className="">
-        <h1 className="font-bold">Create Facilitator</h1>
+        <h1 className="font-bold">Create course</h1>
 
-        <form onSubmit={submit} className="flex flex-col gap-2">
-          <label className="" htmlFor="title">
-            Enter course title
-          </label>
-          <input
-            type="text"
-            value={data.title}
-            // @ts-ignore
-            onChange={(e) => setData('title', e.target.value)}
+        <form onSubmit={submit} className="flex flex-col gap-3">
+          <TextInput
             id="title"
-            name="title"
-            className="border"
+            label="Enter course title"
+            value={data.title}
+            changeData={setData}
           />
 
-          <label className="" htmlFor="image">
-            Enter image url
-          </label>
-          <input
-            type="text"
-            value={data.image}
-            // @ts-ignore
-            onChange={(e) => setData('image', e.target.value)}
+          <TextInput
             id="image"
-            name="image"
-            className="border"
+            label="Enter image url"
+            value={data.image}
+            changeData={setData}
           />
 
-          <label className="" htmlFor="description">
-            Enter description
-          </label>
-          <textarea
-            value={data.description}
-            // @ts-ignore
-            onChange={(e) => setData('description', e.target.value)}
+          <TextareaInput
             id="description"
-            name="description"
-            className="border"
+            label="Enter description"
+            value={data.description}
+            changeData={setData}
           />
-
-          <label className="" htmlFor="overview">
-            Enter overview
-          </label>
-          <textarea
-            value={data.overview}
-            // @ts-ignore
-            onChange={(e) => setData('overview', e.target.value)}
+          <TextareaInput
             id="overview"
-            name="overview"
-            className="border"
+            label="Enter overview"
+            value={data.overview}
+            changeData={setData}
           />
 
-          <label className="" htmlFor="duration">
-            Enter duration
-          </label>
-          <input
-            type="text"
-            value={data.duration}
-            // @ts-ignore
-            onChange={(e) => setData('duration', e.target.value)}
+          <TextInput
             id="duration"
-            name="duration"
-            className="border"
+            label="Enter duration"
+            value={data.duration}
+            changeData={setData}
           />
 
           <label className="" htmlFor="learning">
@@ -143,17 +116,11 @@ const create = ({ facilitators, categories }) => {
             <option value="remote">Remote</option>
           </select>
 
-          <label className="" htmlFor="fee">
-            Enter fee amount
-          </label>
-          <input
-            type="text"
-            value={data.fee}
-            // @ts-ignore
-            onChange={(e) => setData('fee', e.target.value)}
+          <TextareaInput
             id="fee"
-            name="fee"
-            className="border"
+            label="Enter fee amount"
+            value={data.fee}
+            changeData={setData}
           />
 
           <label className="" htmlFor="level">
@@ -219,20 +186,28 @@ const create = ({ facilitators, categories }) => {
             )}
           </select>
 
-          <label className="" htmlFor="topics">
+          <label className="pl-2" htmlFor="topics">
             Enter topics
           </label>
 
           {topicFields.map((input, index) => (
             <div key={index}>
-              <input
+              <TextInput
+                label={`Topic ${index + 1}`}
+                value={input.value}
+                key={index}
+                changeData={handleInputChange}
+                id={`topic${index}`}
+                className="!text-sm"
+              />
+              {/* <input
                 type="text"
                 value={input.value}
                 onChange={(e) => handleInputChange(index, e)}
                 id={`topic${index}`}
                 name={`topic${index}`}
                 className="border"
-              />
+              /> */}
             </div>
           ))}
 

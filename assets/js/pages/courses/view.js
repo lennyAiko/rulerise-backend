@@ -1,4 +1,4 @@
-import { useForm } from '@inertiajs/react'
+import { router, useForm } from '@inertiajs/react'
 import CoursesLayout from './_components/CoursesLayout'
 import { useEffect, useState } from 'react'
 
@@ -62,7 +62,7 @@ const create = ({ facilitators, categories, course }) => {
       <div className="">
         <h1 className="font-bold">update Facilitator</h1>
 
-        <form onSubmit={submit} className="flex flex-col gap-2">
+        <form className="flex flex-col gap-2">
           <label className="" htmlFor="title">
             Enter course title
           </label>
@@ -245,8 +245,17 @@ const create = ({ facilitators, categories, course }) => {
             Add Topic
           </button>
 
-          <button type="submit" className="border">
+          <button type="submit" className="border" onClick={submit}>
             Submit
+          </button>
+
+          <button
+            onClick={(e) => {
+              e.preventDefault()
+              router.delete(`/courses/${course.id}`)
+            }}
+          >
+            Delete
           </button>
         </form>
       </div>
