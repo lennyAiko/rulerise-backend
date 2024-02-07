@@ -32,6 +32,7 @@ const create = ({ facilitators, categories }) => {
   }
 
   const handleInputChange = (index, event) => {
+    console.log(index)
     const newTopicInputs = [...topicFields]
     newTopicInputs[index].value = event.target.value
     setTopicFields(newTopicInputs)
@@ -60,9 +61,9 @@ const create = ({ facilitators, categories }) => {
   return (
     <CoursesLayout>
       <div className="">
-        <h1 className="font-bold">Create course</h1>
+        <h1 className="m-2 mb-2 font-bold">Create course</h1>
 
-        <form onSubmit={submit} className="flex flex-col gap-3">
+        <form onSubmit={submit} className="flex flex-col gap-3 lg:gap-5">
           <TextInput
             id="title"
             label="Enter course title"
@@ -97,7 +98,7 @@ const create = ({ facilitators, categories }) => {
             changeData={setData}
           />
 
-          <label className="" htmlFor="learning">
+          <label className="pl-2" htmlFor="learning">
             Enter learning mode
           </label>
           <select
@@ -110,6 +111,7 @@ const create = ({ facilitators, categories }) => {
                 e.target.value
               )
             }
+            className="rounded-lg border p-2 font-bold"
           >
             <option value="">--Select--</option>
             <option value="on-site">On-site</option>
@@ -123,7 +125,7 @@ const create = ({ facilitators, categories }) => {
             changeData={setData}
           />
 
-          <label className="" htmlFor="level">
+          <label className="pl-2" htmlFor="level">
             Enter level
           </label>
           <select
@@ -136,6 +138,7 @@ const create = ({ facilitators, categories }) => {
                 e.target.value
               )
             }
+            className="rounded-lg border p-2 font-bold"
           >
             <option value="">--Select--</option>
             <option value="beginner">Beginner</option>
@@ -149,12 +152,15 @@ const create = ({ facilitators, categories }) => {
             <option value="advance">Advanced</option>
           </select>
 
-          <label htmlFor="facilitator">Select multiple facilitators:</label>
+          <label htmlFor="facilitator" className="pl-2">
+            Select multiple facilitators:
+          </label>
           <select
             id="facilitator"
             multiple
             value={selectedFacilitatorsOptions}
             onChange={handleSelectFacilitatorsChange}
+            className="rounded-lg border p-2 font-bold"
           >
             {facilitators ? (
               facilitators.map((facilitator) => (
@@ -167,12 +173,15 @@ const create = ({ facilitators, categories }) => {
             )}
           </select>
 
-          <label htmlFor="category">Select multiple categories:</label>
+          <label htmlFor="category" className="pl-2">
+            Select multiple categories:
+          </label>
           <select
             id="category"
             value={data.category}
             // @ts-ignore
             onChange={(e) => setData('category', e.target.value)}
+            className="rounded-lg border p-2 font-bold"
           >
             <option value="">--Select--</option>
             {categories ? (
@@ -191,32 +200,34 @@ const create = ({ facilitators, categories }) => {
           </label>
 
           {topicFields.map((input, index) => (
-            <div key={index}>
-              <TextInput
-                label={`Topic ${index + 1}`}
-                value={input.value}
-                key={index}
-                changeData={handleInputChange}
-                id={`topic${index}`}
-                className="!text-sm"
-              />
-              {/* <input
+            <div key={index} className="flex flex-col gap-1">
+              <label className="pl-2" htmlFor={`topic${index}`}>
+                Topic {index + 1}
+              </label>
+              <input
                 type="text"
                 value={input.value}
                 onChange={(e) => handleInputChange(index, e)}
                 id={`topic${index}`}
                 name={`topic${index}`}
-                className="border"
-              /> */}
+                className={`rounded-lg border py-2 pl-3 font-bold`}
+              />
             </div>
           ))}
 
-          <button onClick={handleAddInput} disabled={topicFields.length === 19}>
+          <button
+            onClick={handleAddInput}
+            disabled={topicFields.length === 19}
+            className="w-fit rounded-lg bg-primary p-2 text-sm text-white hover:bg-primary/80 lg:text-base"
+          >
             Add Topic
           </button>
 
-          <button type="submit" className="border">
-            Submit
+          <button
+            type="submit"
+            className="w-fit rounded-lg border bg-primary p-2 text-sm text-white hover:bg-primary/80 lg:text-base"
+          >
+            Submit Course
           </button>
         </form>
       </div>

@@ -1,6 +1,8 @@
 import { router, useForm } from '@inertiajs/react'
 import CoursesLayout from './_components/CoursesLayout'
 import { useEffect, useState } from 'react'
+import TextInput from '@/components/TextInput'
+import TextareaInput from '@/components/TextareaInput'
 
 const create = ({ facilitators, categories, course }) => {
   const [topicFields, setTopicFields] = useState([{ value: '' }])
@@ -29,6 +31,10 @@ const create = ({ facilitators, categories, course }) => {
     setTopicFields([...topicFields, { value: '' }])
   }
 
+  useEffect(() => {
+    setTopicFields(data.topics)
+  }, [])
+
   const handleInputChange = (index, event) => {
     const newTopicInputs = [...topicFields]
     newTopicInputs[index].value = event.target.value
@@ -55,79 +61,48 @@ const create = ({ facilitators, categories, course }) => {
     post('/courses/create')
   }
 
-  console.log(course)
-
   return (
     <CoursesLayout>
       <div className="">
-        <h1 className="font-bold">update Facilitator</h1>
+        <h1 className="m-2 mb-2 font-bold">Update course</h1>
 
-        <form className="flex flex-col gap-2">
-          <label className="" htmlFor="title">
-            Enter course title
-          </label>
-          <input
-            type="text"
-            value={data.title}
-            // @ts-ignore
-            onChange={(e) => setData('title', e.target.value)}
+        <form className="flex flex-col gap-3 lg:gap-5">
+          <TextInput
             id="title"
-            name="title"
-            className="border"
+            label="Update course title"
+            value={data.title}
+            changeData={setData}
           />
 
-          <label className="" htmlFor="image">
-            Enter image url
-          </label>
-          <input
-            type="text"
-            value={data.image}
-            // @ts-ignore
-            onChange={(e) => setData('image', e.target.value)}
+          <TextInput
             id="image"
-            name="image"
-            className="border"
+            label="Update image url"
+            value={data.image}
+            changeData={setData}
           />
 
-          <label className="" htmlFor="description">
-            Enter description
-          </label>
-          <textarea
-            value={data.description}
-            // @ts-ignore
-            onChange={(e) => setData('description', e.target.value)}
+          <TextareaInput
             id="description"
-            name="description"
-            className="border"
+            label="Update description"
+            value={data.description}
+            changeData={setData}
           />
-
-          <label className="" htmlFor="overview">
-            Enter overview
-          </label>
-          <textarea
-            value={data.overview}
-            // @ts-ignore
-            onChange={(e) => setData('overview', e.target.value)}
+          <TextareaInput
             id="overview"
-            name="overview"
-            className="border"
+            label="Update overview"
+            value={data.overview}
+            changeData={setData}
           />
 
-          <label className="" htmlFor="duration">
-            Enter duration
-          </label>
-          <input
-            type="text"
-            value={data.duration}
-            // @ts-ignore
-            onChange={(e) => setData('duration', e.target.value)}
+          <TextInput
             id="duration"
-            name="duration"
-            className="border"
+            label="Update duration"
+            value={data.duration}
+            changeData={setData}
           />
 
-          <label className="" htmlFor="learning">
-            Enter learning mode
+          <label className="pl-2" htmlFor="learning">
+            Update learning mode
           </label>
           <select
             id="learning"
@@ -139,28 +114,26 @@ const create = ({ facilitators, categories, course }) => {
                 e.target.value
               )
             }
+            className="rounded-lg border p-2 font-bold"
           >
             <option value="">--Select--</option>
             <option value="on-site">On-site</option>
             <option value="remote">Remote</option>
           </select>
 
-          <label className="" htmlFor="fee">
-            Enter fee amount
-          </label>
-          <input
-            type="text"
-            value={data.fee}
-            // @ts-ignore
-            onChange={(e) => setData('fee', e.target.value)}
+          <TextareaInput
             id="fee"
-            name="fee"
-            className="border"
+            label="Update fee amount"
+            value={data.fee}
+            changeData={setData}
           />
 
-          <label className="" htmlFor="level">
+          <label className="pl-2" htmlFor="level">
             Enter level
           </label>
+          <p className="pl-2 text-sm lg:text-base">
+            Selected: <span className="font-bold">{data.level}</span>
+          </p>
           <select
             id="level"
             value={data.level}
@@ -171,6 +144,7 @@ const create = ({ facilitators, categories, course }) => {
                 e.target.value
               )
             }
+            className="rounded-lg border p-2 font-bold"
           >
             <option value="">--Select--</option>
             <option value="beginner">Beginner</option>
@@ -185,12 +159,15 @@ const create = ({ facilitators, categories, course }) => {
           </select>
 
           {/* Add existing values along with the ones to update */}
-          <label htmlFor="facilitator">Select multiple facilitators:</label>
+          <label htmlFor="facilitator" className="pl-2">
+            Update facilitators:
+          </label>
           <select
             id="facilitator"
             multiple
             value={selectedFacilitatorsOptions}
             onChange={handleSelectFacilitatorsChange}
+            className="rounded-lg border p-2 font-bold"
           >
             {facilitators ? (
               facilitators.map((facilitator) => (
@@ -204,7 +181,7 @@ const create = ({ facilitators, categories, course }) => {
           </select>
 
           {/* Add existing values along with the ones to update */}
-          <label htmlFor="category">Select multiple categories:</label>
+          <label htmlFor="category">Update category:</label>
           <select
             id="category"
             value={data.category}
@@ -224,39 +201,52 @@ const create = ({ facilitators, categories, course }) => {
           </select>
 
           <label className="" htmlFor="topics">
-            Enter topics
+            Update topics
           </label>
 
           {/* Add existing values along with the ones to update */}
           {topicFields.map((input, index) => (
-            <div key={index}>
+            <div key={index} className="flex flex-col gap-1">
+              <label className="pl-2" htmlFor={`topic${index}`}>
+                Topic {index + 1}
+              </label>
               <input
                 type="text"
                 value={input.value}
                 onChange={(e) => handleInputChange(index, e)}
                 id={`topic${index}`}
                 name={`topic${index}`}
-                className="border"
+                className={`rounded-lg border py-2 pl-3 font-bold`}
               />
             </div>
           ))}
 
-          <button onClick={handleAddInput} disabled={topicFields.length === 19}>
+          <button
+            onClick={handleAddInput}
+            disabled={topicFields.length === 19}
+            className="w-fit rounded-lg bg-primary p-2 text-sm text-white hover:bg-primary/80 lg:text-base"
+          >
             Add Topic
           </button>
+          <div className="flex gap-2">
+            <button
+              type="submit"
+              className="w-fit rounded-lg border bg-primary p-2 text-sm text-white hover:bg-primary/80 lg:text-base"
+              onClick={submit}
+            >
+              Update
+            </button>
 
-          <button type="submit" className="border" onClick={submit}>
-            Submit
-          </button>
-
-          <button
-            onClick={(e) => {
-              e.preventDefault()
-              router.delete(`/courses/${course.id}`)
-            }}
-          >
-            Delete
-          </button>
+            <button
+              onClick={(e) => {
+                e.preventDefault()
+                router.delete(`/courses/${course.id}`)
+              }}
+              className="w-fit rounded-lg border bg-primary p-2 text-sm text-white hover:bg-primary/80 lg:text-base"
+            >
+              Delete
+            </button>
+          </div>
         </form>
       </div>
     </CoursesLayout>
