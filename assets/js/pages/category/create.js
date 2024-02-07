@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import CategoryLayout from './_components/CategoryLayout'
 import { useForm } from '@inertiajs/react'
+import TextInput from '@/components/TextInput'
+import DefaultButton from '@/components/buttons/DefaultButton'
 
 export default function Create() {
   const [disabledButton, setDisabledButton] = useState(true)
@@ -25,35 +27,24 @@ export default function Create() {
 
   return (
     <CategoryLayout>
-      <div className="">
-        <h1 className="font-bold">Create category</h1>
+      <div className="flex flex-col gap-2">
+        <h1 className="my-2 mb-2 font-bold">Create category</h1>
 
-        <form onSubmit={submit} className="flex flex-col gap-2">
-          <label className="" htmlFor="category_name">
-            Enter category name
-          </label>
-          <input
-            type="text"
+        <form className="flex flex-col gap-2">
+          <TextInput
+            label="Enter category name"
             value={data.name}
-            // @ts-ignore
-            onChange={(e) => setData('name', e.target.value)}
-            id="category_name"
-            name="category_name"
-            className="border"
+            changeData={setData}
+            id="name"
           />
 
-          <label className="" htmlFor="file">
-            Paste category icon link
-          </label>
-          <input
-            type="text"
+          <TextInput
+            label="Paste category icon link"
             value={data.image}
-            // @ts-ignore
-            onChange={(e) => setData('image', e.target.value)}
-            id="file"
-            name="file"
-            className="border"
+            changeData={setData}
+            id="image"
           />
+
           {/* <input
             type="file"
             id="file"
@@ -62,9 +53,13 @@ export default function Create() {
             onChange={(e) => setData('image', e.target.files[0])}
           /> */}
 
-          <button type="submit" disabled={disabledButton}>
-            Submit
-          </button>
+          <DefaultButton
+            text="Submit"
+            type="submit"
+            doThis={submit}
+            disabled={disabledButton}
+            className="mt-2 lg:w-fit lg:px-3"
+          />
         </form>
       </div>
     </CategoryLayout>

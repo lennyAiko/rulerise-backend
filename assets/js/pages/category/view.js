@@ -1,5 +1,7 @@
-import { useForm } from '@inertiajs/react'
+import { router, useForm } from '@inertiajs/react'
 import CategoryLayout from './_components/CategoryLayout'
+import TextInput from '@/components/TextInput'
+import DefaultButton from '@/components/buttons/DefaultButton'
 
 const update = ({ category }) => {
   const { data, setData, patch } = useForm({
@@ -14,21 +16,34 @@ const update = ({ category }) => {
 
   return (
     <CategoryLayout>
-      <h2>Update category</h2>
-      <form onSubmit={submit} className="flex w-full flex-col">
-        <input
-          type="text"
+      <h2 className="my-2 mb-2 font-bold">Update category</h2>
+
+      <form className="mt-2 flex w-full flex-col gap-2 px-3">
+        <TextInput
+          id="name"
+          label={'Name'}
           value={data.name}
-          // @ts-ignore
-          onChange={(e) => setData('name', e.target.value)}
+          changeData={setData}
         />
-        <input
-          type="text"
+
+        <TextInput
+          id="image"
+          label={'Image URL'}
           value={data.image}
-          // @ts-ignore
-          onChange={(e) => setData('image', e.target.value)}
+          changeData={setData}
         />
-        <button type="submit">Update</button>
+
+        <div className="flex gap-5 p-2">
+          <DefaultButton text="Update" type="submit" doThis={submit} />
+          <DefaultButton
+            text="Delete"
+            type="submit"
+            doThis={(e) => {
+              e.preventDefault()
+              router.delete(`/category/${category.id}`)
+            }}
+          />
+        </div>
       </form>
     </CategoryLayout>
   )
