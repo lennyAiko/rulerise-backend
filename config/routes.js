@@ -60,6 +60,7 @@ module.exports.routes = {
   // Contact
   'GET /contact': 'contact/fetch',
   'GET /contact/:id': 'contact/view',
+  'DELETE /contact/:id': 'contact/delete',
 
   // Talent
   'GET /talent': 'talent/fetch',

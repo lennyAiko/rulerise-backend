@@ -1,5 +1,6 @@
 import { router } from '@inertiajs/react'
 import ApplicationLayout from './_component/ApplicationLayout'
+import DefaultButton from '@/components/buttons/DefaultButton'
 
 const view = ({ application }) => {
   return (
@@ -51,15 +52,25 @@ const view = ({ application }) => {
           </div>
         </div>
 
-        <button
+        {/* <button
           onClick={(e) => {
             e.preventDefault()
             router.delete(`/application/${application.id}`)
           }}
-          className="col-span-full w-16 rounded-lg bg-primary py-2 text-sm text-white lg:col-span-6 lg:col-start-2 lg:w-20 lg:text-base"
+          className="w-16 py-2 text-sm text-white rounded-lg col-span-full bg-primary lg:col-span-6 lg:col-start-2 lg:w-20 lg:text-base"
         >
           Delete
-        </button>
+        </button> */}
+
+        <DefaultButton
+          className="col-start-2 col-end-4"
+          text="Delete"
+          type={'button'}
+          doThis={(e) => {
+            e.preventDefault()
+            router.delete(`/application/${application.id}`)
+          }}
+        />
       </div>
     </ApplicationLayout>
   )
