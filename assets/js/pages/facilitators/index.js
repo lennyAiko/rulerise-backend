@@ -25,7 +25,7 @@ export default function Index({ facilitators }) {
                   href={`/facilitators/${facilitator.id}`}
                   className="rounded-lg bg-primary px-2 py-0.5 text-white"
                 >
-                  View
+                  view
                 </Link>
               </div>
               <hr />

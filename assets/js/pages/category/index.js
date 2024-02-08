@@ -23,7 +23,7 @@ export default function Index({ categories }) {
                   href={`/category/${category.id}`}
                   className="rounded-lg bg-primary px-2 py-0.5 text-white"
                 >
-                  View
+                  view
                 </Link>
               </div>
               <hr />

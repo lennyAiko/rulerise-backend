@@ -18,7 +18,7 @@ export default function Index({ applications }) {
                 href={`/application/${application.id}`}
                 className="rounded-lg bg-primary px-2 py-0.5 text-white"
               >
-                View
+                view
               </Link>
             </li>
             <hr className="mt-1" />

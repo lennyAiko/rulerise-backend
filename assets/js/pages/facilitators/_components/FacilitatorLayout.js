@@ -2,7 +2,7 @@ import AppLayout from '@/components/AppLayout'
 import React from 'react'
 
 const FacilitatorLayout = ({ children }) => {
-  return <AppLayout title="Faq">{children}</AppLayout>
+  return <AppLayout title="Facilitators">{children}</AppLayout>
 }
 
 export default FacilitatorLayout

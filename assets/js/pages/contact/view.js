@@ -5,7 +5,7 @@ import DefaultButton from '@/components/buttons/DefaultButton'
 const view = ({ contact }) => {
   return (
     <ContactLayout>
-      <h1 className="m-2 mb-2 font-bold">View contact</h1>
+      <h1 className="m-2 mb-2 font-bold">view contact</h1>
 
       <div className="m-2 space-y-2">
         <div className="col-span-2 text-sm md:col-span-3 lg:text-base">

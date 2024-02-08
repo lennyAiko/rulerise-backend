@@ -5,7 +5,7 @@ import DefaultButton from '@/components/buttons/DefaultButton'
 const view = ({ application }) => {
   return (
     <ApplicationLayout>
-      <h1 className="m-2 mb-2 font-bold">View application</h1>
+      <h1 className="m-2 mb-2 font-bold">view application</h1>
 
       <div className="m-3 grid grid-cols-6 gap-3">
         <div className="col-span-full grid grid-cols-4 items-center md:col-span-4 lg:col-start-2">
