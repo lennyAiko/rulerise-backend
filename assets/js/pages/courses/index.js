@@ -18,7 +18,12 @@ export default function Index({ courses }) {
           courses.map((course) => (
             <div className="space-y-2 lg:mx-4" key={course.id}>
               <div className="flex justify-between">
-                <p key={course.id}>{course.title}</p>
+                <p
+                  key={course.id}
+                  className="mt-2 flex items-center justify-between text-sm font-light lg:text-base"
+                >
+                  {course.title}
+                </p>
                 <Link
                   href={`/courses/${course.id}`}
                   className="rounded-lg bg-primary px-2 py-0.5 text-white"

@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import FacilitatorLayout from './_components/FacilitatorLayout'
 import { useForm } from '@inertiajs/react'
 import { socials } from './_components/data'
+import TextInput from '@/components/TextInput'
+import TextareaInput from '@/components/TextareaInput'
 
 const create = () => {
   const [socialFields, setSocialFields] = useState([{ value: '' }])
@@ -41,55 +43,39 @@ const create = () => {
   return (
     <FacilitatorLayout>
       <div className="">
-        <h1 className="font-bold">Create Facilitator</h1>
+        <h1 className="m-2 mb-2 font-bold">Create Facilitator</h1>
 
-        <form onSubmit={submit} className="flex flex-col gap-2">
-          <label className="" htmlFor="fullName">
-            Enter full name
-          </label>
-          <input
-            type="text"
-            value={data.fullName}
-            // @ts-ignore
-            onChange={(e) => setData('fullName', e.target.value)}
+        <form onSubmit={submit} className="flex flex-col gap-3">
+          <TextInput
             id="fullName"
-            name="fullName"
-            className="border"
+            label="Enter full name"
+            value={data.fullName}
+            changeData={setData}
           />
 
-          <label className="" htmlFor="image">
-            Enter image url
-          </label>
-          <input
-            type="text"
-            value={data.image}
-            // @ts-ignore
-            onChange={(e) => setData('image', e.target.value)}
+          <TextInput
             id="image"
-            name="image"
-            className="border"
+            label="Enter image url"
+            value={data.image}
+            changeData={setData}
           />
 
-          <label className="" htmlFor="description">
-            Enter description
-          </label>
-          <input
-            type="text"
-            value={data.description}
-            // @ts-ignore
-            onChange={(e) => setData('description', e.target.value)}
+          <TextareaInput
             id="description"
-            name="description"
-            className="border"
+            label="Enter description"
+            value={data.description}
+            changeData={setData}
           />
 
-          <label className="" htmlFor="socials">
-            Enter socials
+          <label className="pl-2" htmlFor="socials">
+            Enter socials:
           </label>
 
           {socialFields.map((input, index) => (
-            <div key={index}>
-              <label htmlFor={`socials${index}`}>{socials[index]}</label>
+            <div key={index} className="flex items-center gap-2">
+              <label className="w-20" htmlFor={`socials${index}`}>
+                {socials[index]}
+              </label>
 
               <input
                 type="text"
@@ -98,15 +84,22 @@ const create = () => {
                 onChange={(e) => handleInputChange(index, e)}
                 id={`socials${index}`}
                 name={`socials${index}`}
-                className="border"
+                className={`rounded-lg border py-2 pl-3 font-bold`}
               />
             </div>
           ))}
-          <button onClick={handleAddInput} disabled={socialFields.length === 4}>
+          <button
+            onClick={handleAddInput}
+            disabled={socialFields.length === 4}
+            className="w-fit rounded-lg bg-primary p-2 text-sm text-white hover:bg-primary/80 lg:text-base"
+          >
             Add Input
           </button>
 
-          <button type="submit" className="border">
+          <button
+            type="submit"
+            className="w-fit rounded-lg border bg-primary p-2 text-sm text-white hover:bg-primary/80 lg:text-base"
+          >
             Submit
           </button>
         </form>

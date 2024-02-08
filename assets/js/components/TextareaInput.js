@@ -2,7 +2,7 @@ const TextareaInput = ({ id, label, value, changeData, className = '' }) => {
   return (
     <div className="flex flex-col gap-1">
       <label className="pl-2" htmlFor="description">
-        {label}
+        {label}:
       </label>
       <textarea
         value={value}

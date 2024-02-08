@@ -1,3 +1,4 @@
+import { TiPlus } from 'react-icons/ti'
 import FacilitatorLayout from './_components/FacilitatorLayout'
 import { Link, router } from '@inertiajs/react'
 
@@ -5,37 +6,29 @@ export default function Index({ facilitators }) {
   return (
     <FacilitatorLayout>
       <div className="flex flex-col gap-2">
-        <h1 className="font-bold">Facilitator</h1>
+        <div className="flex items-center gap-2">
+          <h1 className="my-2 mb-2 font-bold">Facilitator</h1>
 
-        <Link href="/facilitators/create" className="m-5 border p-2">
-          Add
-        </Link>
+          <Link href="/facilitators/create" className="w-fit p-1">
+            <TiPlus />
+          </Link>
+        </div>
 
         {facilitators.length > 0 ? (
           facilitators.map((facilitator, index) => (
-            <div className="" key={index}>
-              <Link href={`/facilitators/${facilitator.id}`}>
-                <p key={facilitator.id}>{facilitator.fullName}</p>
-              </Link>
-              <img
-                src={facilitator.image}
-                alt="facilitator image"
-                className="h-8 w-8 rounded-full"
-              />
-              <p>{facilitator.description}</p>
-              {facilitator.socials.map((social, index) => (
-                <p key={index}>
-                  {social.platform} -{social.value}
+            <div className="flex flex-col gap-1 px-3" key={index}>
+              <div className="mt-2 flex items-center justify-between text-sm font-light lg:text-base">
+                <p key={facilitator.id} className="">
+                  {facilitator.fullName}
                 </p>
-              ))}
-              <button
-                onClick={(e) => {
-                  e.preventDefault()
-                  router.delete(`/facilitators/${facilitator.id}`)
-                }}
-              >
-                Delete
-              </button>
+                <Link
+                  href={`/facilitators/${facilitator.id}`}
+                  className="rounded-lg bg-primary px-2 py-0.5 text-white"
+                >
+                  View
+                </Link>
+              </div>
+              <hr />
             </div>
           ))
         ) : (

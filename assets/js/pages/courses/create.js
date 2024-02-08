@@ -32,7 +32,6 @@ const create = ({ facilitators, categories }) => {
   }
 
   const handleInputChange = (index, event) => {
-    console.log(index)
     const newTopicInputs = [...topicFields]
     newTopicInputs[index].value = event.target.value
     setTopicFields(newTopicInputs)

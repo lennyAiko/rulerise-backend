@@ -9,7 +9,7 @@ export default function Index({ contacts }) {
       <ul>
         {contacts.map((contact) => (
           <li key={contact.id} className="mt-2 space-y-1 px-3">
-            <div className="flex justify-between">
+            <div className="mt-2 flex items-center justify-between text-sm font-light lg:text-base">
               {contact.fullName}
               <Link
                 href={`/contact/${contact.id}`}
