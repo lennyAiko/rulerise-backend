@@ -6,6 +6,10 @@ export default function Index({ applications }) {
     <ApplicationLayout>
       <h1 className="m-2 mb-2 font-bold">Applications</h1>
 
+      {applications.length === 0 ? (
+        <h2 className="px-3">No application received yet</h2>
+      ) : null}
+
       <ul className="space-y-3 px-4">
         {applications.map((application, index) => (
           <div key={index}>
