@@ -18,7 +18,8 @@
     "sails-hook-orm": "^4.0.0",
     "sails-hook-sockets": "^2.0.0",
     "sails-mongo": "^2.1.0",
-    "skipper": "^0.9.4"
+    "skipper": "^0.9.4",
+    "stripe": "^14.15.0"
   },
   "devDependencies": {
     "@rsbuild/core": "^0.2.8",

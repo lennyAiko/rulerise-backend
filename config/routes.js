@@ -75,4 +75,5 @@ module.exports.routes = {
   'POST /api/applications': 'applications/api/create',
   'POST /api/contacts': 'contact/api/create',
   'POST /api/talents': 'talent/api/create',
+  'POST /api/stripe': 'stripe',
 }
