@@ -20,6 +20,12 @@ module.exports.routes = {
    ***************************************************************************/
   'GET /': 'dashboard/index',
 
+  // Auth
+  'GET /signup': 'auth/view-signup',
+  'POST /signup': 'auth/view-signup',
+  'GET /signin': 'auth/view-signin',
+  'POST /signin': 'auth/view-signin',
+
   // Category
   'POST /category/create': 'category/create',
   'GET /category/create': 'category/view-create',

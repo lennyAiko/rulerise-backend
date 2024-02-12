@@ -1,0 +1,88 @@
+import TextInput from '@/components/TextInput'
+import { useForm } from '@inertiajs/react'
+import { useEffect, useState } from 'react'
+import DefaultButton from '@/components/buttons/DefaultButton'
+
+const Signup = () => {
+  const { data, setData, post } = useForm({
+    fullName: '',
+    email: '',
+    password: '',
+  })
+
+  const [showPassword, setShowPassword] = useState(false)
+  const [passwordType, setPasswordType] = useState('password')
+
+  const [disabledButton, setDisabledButton] = useState(true)
+
+  const changePasswordField = (e) => {
+    setShowPassword(!showPassword)
+    if (showPassword) {
+      setPasswordType('password')
+    } else {
+      setPasswordType('text')
+    }
+  }
+  useEffect(() => {
+    if (data.fullName.length > 3) {
+      setDisabledButton(false)
+    } else {
+      setDisabledButton(true)
+    }
+  }, [data.fullName])
+
+  const submit = (e) => {
+    e.preventDefault()
+    post('/signup')
+  }
+
+  return (
+    <div className="mt-10 flex flex-col items-center justify-center gap-5 lg:mt-20">
+      <img
+        src="/images/rulerise.svg"
+        alt="rulerise logo"
+        className="h-[25px] w-[95px] lg:h-[35px] lg:w-[125px]"
+      />
+      <form className="w-[30vw] space-y-3">
+        <TextInput
+          label="Enter full name"
+          id="fullName"
+          value={data.fullName}
+          changeData={setData}
+        />{' '}
+        <TextInput
+          label="Enter email"
+          id="email"
+          type="email"
+          value={data.email}
+          changeData={setData}
+        />{' '}
+        <TextInput
+          label="Enter password"
+          id="password"
+          type={passwordType}
+          value={data.password}
+          changeData={setData}
+        />
+        <div className="flex items-center gap-2">
+          <input
+            type="checkbox"
+            checked={showPassword}
+            onChange={changePasswordField}
+            className="form-checkbox"
+          />
+          <p className="-mt-1.5">show password</p>
+        </div>
+        <DefaultButton
+          text="Create account"
+          type="submit"
+          doThis={submit}
+          disabled={disabledButton}
+          className="m-3 w-full items-center justify-center rounded-lg bg-primary p-2 text-sm font-bold text-white lg:text-base"
+        />
+      </form>
+    </div>
+  )
+}
+
+export default Signup

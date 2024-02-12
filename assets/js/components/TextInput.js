@@ -1,11 +1,18 @@
-const TextInput = ({ id, label, value, changeData, className = '' }) => {
+const TextInput = ({
+  id,
+  label,
+  value,
+  changeData,
+  className = '',
+  type = 'text',
+}) => {
   return (
     <div className="flex flex-col gap-1">
       <label className="pl-2" htmlFor={id}>
         {label}:
       </label>
       <input
-        type="text"
+        type={type}
         value={value}
         id={id}
         name={id}
