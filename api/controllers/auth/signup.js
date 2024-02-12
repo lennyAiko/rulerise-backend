@@ -23,7 +23,7 @@ module.exports = {
 
   exits: {
     success: {
-      responseType: 'ok',
+      responseType: 'redirect',
     },
     badCombo: {
       responseType: 'badRequest',
@@ -31,14 +31,9 @@ module.exports = {
   },
 
   fn: async function ({ fullName, email, password }, exits) {
-    console.log(fullName)
-    const user = await User.create({ fullName, email, password }).fetch()
-
-    if (!user) {
-      return exits.badCombo('Could not create user')
-    }
+    await User.create({ fullName, email, password })
 
     // All done.
-    return '/'
+    return '/category'
   },
 }

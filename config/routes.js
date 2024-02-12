@@ -22,9 +22,9 @@ module.exports.routes = {
 
   // Auth
   'GET /signup': 'auth/view-signup',
-  'POST /signup': 'auth/view-signup',
+  'POST /signup': 'auth/signup',
   'GET /signin': 'auth/view-signin',
-  'POST /signin': 'auth/view-signin',
+  'POST /signin': 'auth/signin',
 
   // Category
   'POST /category/create': 'category/create',

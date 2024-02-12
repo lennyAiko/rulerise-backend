@@ -78,7 +78,7 @@ const Signup = () => {
           type="submit"
           doThis={submit}
           disabled={disabledButton}
-          className="m-3 w-full items-center justify-center rounded-lg bg-primary p-2 text-sm font-bold text-white lg:text-base"
+          className="my-3 w-full items-center justify-center rounded-lg bg-primary p-2 text-sm font-bold text-white lg:text-base"
         />
       </form>
     </div>

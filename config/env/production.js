@@ -1,3 +1,4 @@
+require('dotenv').config()
 /**
  * Production environment settings
  * (sails.config.*)
@@ -46,8 +47,8 @@ module.exports = {
     default: {
       // adapter: require('sails-mysql'),
       // url: 'mysql://user:password@host:port/database',
-      adapter: require('sails-postgresql'),
-      url: 'postgres://ccehlpow:zp89dMjFX6PSd3tjvxLODlwUEe3TIVw4@bubble.db.elephantsql.com/ccehlpow',
+      adapter: require('sails-mongo'),
+      url: process.env.DB_URL,
     },
     //--------------------------------------------------------------------------
     //  /\   To avoid checking it in to version control, you might opt to set
