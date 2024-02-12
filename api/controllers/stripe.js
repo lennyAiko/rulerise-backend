@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   friendlyName: 'Stripe',
 
@@ -8,7 +10,7 @@ module.exports = {
   exits: {},
 
   fn: async function (inputs) {
-    const stripeUrl = await sails.helpers.paymentUrl()
+    const stripeUrl = await sails.helpers.paymentUrl(process.env.PROD_PRICE)
 
     console.log(stripeUrl)
 

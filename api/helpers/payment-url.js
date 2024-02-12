@@ -7,7 +7,12 @@ module.exports = {
 
   description: '',
 
-  inputs: {},
+  inputs: {
+    priceId: {
+      type: 'string',
+      required: true,
+    },
+  },
 
   exits: {
     success: {
@@ -21,7 +26,7 @@ module.exports = {
       mode: 'payment',
       line_items: [
         {
-          price: 50000,
+          price: inputs.priceId,
           quantity: 1,
         },
       ],

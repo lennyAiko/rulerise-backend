@@ -46,6 +46,8 @@ module.exports = {
     default: {
       // adapter: require('sails-mysql'),
       // url: 'mysql://user:password@host:port/database',
+      adapter: require('sails-postgresql'),
+      url: 'postgres://ccehlpow:zp89dMjFX6PSd3tjvxLODlwUEe3TIVw4@bubble.db.elephantsql.com/ccehlpow',
     },
     //--------------------------------------------------------------------------
     //  /\   To avoid checking it in to version control, you might opt to set
@@ -109,7 +111,7 @@ module.exports = {
      *                                                                          *
      ***************************************************************************/
     cors: {
-      allowOrigins: ['http://localhost:1337'],
+      allowOrigins: ['http://localhost:1337', 'https://rulerise.vercel.app'],
     },
   },
 
@@ -200,6 +202,7 @@ module.exports = {
      ***************************************************************************/
     onlyAllowOrigins: [
       'http://localhost:1337',
+      'https://rulerise.vercel.app',
       //   'https://example.com',
     ],
 
