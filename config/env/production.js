@@ -112,7 +112,11 @@ module.exports = {
      *                                                                          *
      ***************************************************************************/
     cors: {
-      allowOrigins: ['http://localhost:3000', 'https://rulerise.vercel.app'],
+      allowOrigins: [
+        'http://localhost:3000',
+        'https://rulerise.vercel.app',
+        'https://rulerise.com',
+      ],
     },
   },
 

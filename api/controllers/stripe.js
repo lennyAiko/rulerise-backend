@@ -10,9 +10,7 @@ module.exports = {
   exits: {},
 
   fn: async function (inputs) {
-    const stripeUrl = await sails.helpers.paymentUrl(process.env.PROD_PRICE)
-
-    console.log(stripeUrl)
+    const stripeUrl = await sails.helpers.paymentUrl(process.env.AGILE_SCRUM_ID)
 
     // All done.
     return 'ok'
