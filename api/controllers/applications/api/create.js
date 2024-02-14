@@ -1,3 +1,4 @@
+require('dotenv').config()
 module.exports = {
   friendlyName: 'Create',
 
@@ -78,6 +79,7 @@ module.exports = {
       })
     }
 
+    // @ts-ignore
     const course = await Course.findOne({
       id: courseId,
     })
@@ -89,6 +91,7 @@ module.exports = {
       })
     }
 
+    // @ts-ignore
     const url = await sails.helpers.paymentUrl(course.priceId)
     // All done.
     return exits.success({

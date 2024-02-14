@@ -39,6 +39,10 @@ module.exports = {
       type: 'ref',
       required: true,
     },
+    priceId: {
+      type: 'string',
+      required: true,
+    },
     facilitator: {
       type: 'ref',
       // required: true,
@@ -55,7 +59,7 @@ module.exports = {
     },
   },
 
-  fn: async function (inputs, exits) {
+  fn: async function (inputs) {
     // @ts-ignore
     const course = await Courses.updateOne({ id: this.req.params.id }).set({
       image: inputs.image,
@@ -64,6 +68,7 @@ module.exports = {
       overview: inputs.overview,
       duration: inputs.duration,
       learningMode: inputs.learningMode,
+      priceId: inputs.priceId,
       fee: inputs.fee,
       level: inputs.level,
       topics: inputs.topics,

@@ -7,7 +7,7 @@ import TextareaInput from '@/components/TextareaInput'
 const create = ({ facilitators, categories, course }) => {
   const [topicFields, setTopicFields] = useState([{ value: '' }])
 
-  const { data, setData, post } = useForm({
+  const { data, setData, patch } = useForm({
     title: course.title,
     image: course.image,
     description: course.description,
@@ -19,6 +19,7 @@ const create = ({ facilitators, categories, course }) => {
     topics: course.topics,
     facilitators: course.facilitators,
     category: course.category,
+    priceId: course.priceId,
   })
 
   useEffect(() => {
@@ -58,7 +59,8 @@ const create = ({ facilitators, categories, course }) => {
 
   const submit = (e) => {
     e.preventDefault()
-    post('/courses/create')
+    console.log(data)
+    patch(`/courses/${course.id}`)
   }
 
   return (
@@ -121,7 +123,14 @@ const create = ({ facilitators, categories, course }) => {
             <option value="remote">Remote</option>
           </select>
 
-          <TextareaInput
+          <TextInput
+            id="priceId"
+            label="Update stripe price ID"
+            value={data.priceId}
+            changeData={setData}
+          />
+
+          <TextInput
             id="fee"
             label="Update fee amount"
             value={data.fee}

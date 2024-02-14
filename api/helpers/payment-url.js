@@ -1,5 +1,6 @@
 require('dotenv').config()
 
+// @ts-ignore
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
 module.exports = {
@@ -33,8 +34,6 @@ module.exports = {
       success_url: process.env.SUCCESS_URL,
       cancel_url: process.env.CANCEL_URL,
     })
-
-    console.log(session)
 
     return session.url
   },

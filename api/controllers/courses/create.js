@@ -57,33 +57,31 @@ module.exports = {
     success: {
       responseType: 'redirect',
     },
-    serverError: {
-      responseType: 'internalServerError',
+    badCombo: {
+      responseType: 'badRequest',
     },
   },
 
   fn: async function (inputs, exits) {
-    try {
-      // @ts-ignore
-      await Courses.create({
-        image: inputs.image,
-        title: inputs.title,
-        description: inputs.description,
-        overview: inputs.overview,
-        duration: inputs.duration,
-        learningMode: inputs.learningMode,
-        priceId: inputs.priceId,
-        fee: inputs.fee,
-        level: inputs.level,
-        topics: inputs.topics,
-        facilitator: inputs.facilitator,
-        category: inputs.category,
-      })
-    } catch (err) {
-      sails.log(err)
-      return exits.serverError('Could not create course')
+    // @ts-ignore
+    const course = await Courses.create({
+      image: inputs.image,
+      title: inputs.title,
+      description: inputs.description,
+      overview: inputs.overview,
+      duration: inputs.duration,
+      learningMode: inputs.learningMode,
+      priceId: inputs.priceId,
+      fee: inputs.fee,
+      level: inputs.level,
+      topics: inputs.topics,
+      facilitator: inputs.facilitator,
+      category: inputs.category,
+    }).fetch()
+    if (!course) {
+      return exits.badCombo('Could not create course')
     }
-    // All done.
+
     return exits.success('/courses')
   },
 }

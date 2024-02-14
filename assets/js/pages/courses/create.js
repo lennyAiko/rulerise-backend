@@ -14,6 +14,7 @@ const create = ({ facilitators, categories }) => {
     overview: '',
     duration: '',
     learningMode: '',
+    priceId: '',
     fee: '',
     level: '',
     topics: [],
@@ -117,7 +118,14 @@ const create = ({ facilitators, categories }) => {
             <option value="remote">Remote</option>
           </select>
 
-          <TextareaInput
+          <TextInput
+            id="priceId"
+            label="Enter stripe price id"
+            value={data.priceId}
+            changeData={setData}
+          />
+
+          <TextInput
             id="fee"
             label="Enter fee amount"
             value={data.fee}
@@ -173,7 +181,7 @@ const create = ({ facilitators, categories }) => {
           </select>
 
           <label htmlFor="category" className="pl-2">
-            Select multiple categories:
+            Select categories:
           </label>
           <select
             id="category"
