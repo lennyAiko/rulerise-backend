@@ -32,7 +32,7 @@ module.exports.security = {
       'http://localhost:3000',
       'https://rulerise.vercel.app',
       'https://rulerise.com',
-      'https://www.rulerise.com/',
+      'https://www.rulerise.com',
     ],
     allowCredentials: true,
     allowRequestHeaders:
