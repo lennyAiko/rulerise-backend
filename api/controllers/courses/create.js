@@ -43,7 +43,7 @@ module.exports = {
       type: 'ref',
       required: true,
     },
-    facilitator: {
+    facilitators: {
       type: 'ref',
       required: true,
     },
@@ -75,7 +75,7 @@ module.exports = {
       fee: inputs.fee,
       level: inputs.level,
       topics: inputs.topics,
-      facilitators: inputs.facilitator,
+      facilitators: inputs.facilitators,
       category: inputs.category,
     }).fetch()
     if (!course) {
