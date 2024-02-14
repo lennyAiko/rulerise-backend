@@ -27,6 +27,10 @@ module.exports = {
     learningMode: {
       type: 'string',
     },
+    priceId: {
+      type: 'string',
+      required: true,
+    },
     fee: {
       type: 'string',
       required: true,
@@ -68,6 +72,7 @@ module.exports = {
         overview: inputs.overview,
         duration: inputs.duration,
         learningMode: inputs.learningMode,
+        priceId: inputs.priceId,
         fee: inputs.fee,
         level: inputs.level,
         topics: inputs.topics,

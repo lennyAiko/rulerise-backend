@@ -37,6 +37,11 @@ module.exports = {
       type: 'string',
       required: true,
     },
+    priceId: {
+      type: 'string',
+      required: true,
+      columnName: 'price_id',
+    },
     level: {
       type: 'string',
       required: true,

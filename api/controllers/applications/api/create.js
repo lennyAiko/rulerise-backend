@@ -29,6 +29,10 @@ module.exports = {
     reference: {
       type: 'string',
     },
+    courseId: {
+      type: 'string',
+      required: true,
+    },
   },
 
   exits: {
@@ -51,6 +55,7 @@ module.exports = {
       experience,
       educationalBackground,
       reference,
+      courseId,
     },
     exits
   ) {
@@ -72,10 +77,24 @@ module.exports = {
         message: 'Failed to create an application.',
       })
     }
+
+    const course = await Course.findOne({
+      id: courseId,
+    })
+
+    if (!course) {
+      return exits.error({
+        status: 400,
+        message: 'Course not found.',
+      })
+    }
+
+    const url = await sails.helpers.paymentUrl(course.priceId)
     // All done.
     return exits.success({
       status: 200,
       message: 'Successfully created an application.',
+      url,
     })
   },
 }
