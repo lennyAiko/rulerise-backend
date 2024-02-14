@@ -75,6 +75,7 @@ module.exports.routes = {
 
   // API
   'GET /api/courses': 'courses/api/fetch',
+  'GET /api/courses/:id': 'courses/api/view',
   'GET /api/categories': 'category/api/fetch',
   'GET /api/faqs': 'faqs/api/fetch',
   'GET /api/facilitators': 'facilitators/api/fetch',

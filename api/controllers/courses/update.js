@@ -45,7 +45,7 @@ module.exports = {
     },
     facilitator: {
       type: 'ref',
-      // required: true,
+      required: true,
     },
     category: {
       type: 'string',

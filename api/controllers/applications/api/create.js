@@ -80,7 +80,7 @@ module.exports = {
     }
 
     // @ts-ignore
-    const course = await Course.findOne({
+    const course = await Courses.findOne({
       id: courseId,
     })
 
