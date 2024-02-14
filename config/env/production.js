@@ -204,6 +204,7 @@ module.exports = {
     onlyAllowOrigins: [
       'http://localhost:3000',
       'https://rulerise.vercel.app',
+      'https://rulerise.com',
       //   'https://example.com',
     ],
 
