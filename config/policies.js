@@ -16,7 +16,7 @@ module.exports.policies = {
    *                                                                          *
    ***************************************************************************/
   // '*': true,
-  '*': ['share-path', 'is-authenticated'],
+  '*': ['share-path', 'is-authenticated', 'is-approved'],
 
   // Auth
   'auth/signin': true,
