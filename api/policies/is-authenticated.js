@@ -1,6 +1,6 @@
 module.exports = async function (req, res, proceed) {
-  if (!req.session.userId) {
-    return res.redirect('/signin')
+  if (req.session.userId) {
+    proceed()
   }
-  proceed()
+  return res.redirect('/signin')
 }
