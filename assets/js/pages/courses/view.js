@@ -59,7 +59,6 @@ const create = ({ facilitators, categories, course }) => {
 
   const submit = (e) => {
     e.preventDefault()
-    console.log(data)
     patch(`/courses/${course.id}`)
   }
 

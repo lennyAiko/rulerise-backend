@@ -1,27 +1,14 @@
 module.exports = {
-
-
   friendlyName: 'View signin',
-
 
   description: 'Display "Signin" page.',
 
-
   exits: {
-
-    success: {
-      viewTemplatePath: 'pages/auth/signin'
-    }
-
+    success: {},
   },
 
-
   fn: async function () {
-
     // Respond with view.
-    return {};
-
-  }
-
-
-};
+    return sails.inertia.render('auth/signin')
+  },
+}

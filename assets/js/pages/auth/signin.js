@@ -5,7 +5,6 @@ import DefaultButton from '@/components/buttons/DefaultButton'
 
 const Signup = () => {
   const { data, setData, post } = useForm({
-    fullName: '',
     email: '',
     password: '',
   })
@@ -24,16 +23,16 @@ const Signup = () => {
     }
   }
   useEffect(() => {
-    if (data.fullName.length > 3) {
+    if (data.email.length > 3) {
       setDisabledButton(false)
     } else {
       setDisabledButton(true)
     }
-  }, [data.fullName])
+  }, [data.email])
 
   const submit = (e) => {
     e.preventDefault()
-    post('/signup')
+    post('/signin')
   }
 
   return (
@@ -44,12 +43,6 @@ const Signup = () => {
         className="h-[25px] w-[95px] lg:h-[35px] lg:w-[125px]"
       />
       <form className="space-y-3 lg:w-[30vw]">
-        <TextInput
-          label="Enter full name"
-          id="fullName"
-          value={data.fullName}
-          changeData={setData}
-        />{' '}
         <TextInput
           label="Enter email"
           id="email"
@@ -82,9 +75,9 @@ const Signup = () => {
         />
       </form>
       <p className="text-sm lg:text-base">
-        New user?{' '}
-        <Link href="/signin" className="text-primary">
-          Sign in
+        Already have an account?{' '}
+        <Link href="/signup" className="text-primary">
+          Sign up
         </Link>
       </p>
     </div>

@@ -1,7 +1,9 @@
 import { Link, usePage } from '@inertiajs/react'
 
 const Header = () => {
-  const { pathName } = usePage().props
+  const { pathName, loggedInUser } = usePage().props
+
+  console.log(loggedInUser)
 
   return (
     <div className="sticky top-0 z-50 flex h-fit w-full items-center justify-between bg-white p-2 shadow-lg">

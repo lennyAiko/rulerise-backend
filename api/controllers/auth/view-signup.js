@@ -3,7 +3,9 @@ module.exports = {
 
   description: 'Display "Signup" page.',
 
-  exits: {},
+  exits: {
+    success: {},
+  },
 
   fn: async function () {
     // Respond with view.

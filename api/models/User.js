@@ -20,9 +20,18 @@ module.exports = {
       required: true,
     },
 
+    status: {
+      type: 'string',
+      isIn: ['approved', 'disapproved'],
+      defaultsTo: 'disapproved',
+    },
+
     password: {
       type: 'string',
       required: true,
     },
+  },
+  customToJSON: function () {
+    return _.omit(this, ['password', 'createdAt', 'updatedAt'])
   },
 }

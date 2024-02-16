@@ -73,6 +73,10 @@ module.exports.routes = {
   'GET /talent/:id': 'talent/view',
   'DELETE /talent/:id': 'talent/delete',
 
+  // User
+  'GET /user': 'user/view',
+  'GET /logout': 'user/logout',
+
   // API
   'GET /api/courses': 'courses/api/fetch',
   'GET /api/courses/:id': 'courses/api/view',
