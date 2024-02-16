@@ -67,7 +67,7 @@ const Signup = () => {
           <p className="-mt-1.5">show password</p>
         </div>
         <DefaultButton
-          text="Create account"
+          text="Sign in"
           type="submit"
           doThis={submit}
           disabled={disabledButton}
@@ -75,7 +75,7 @@ const Signup = () => {
         />
       </form>
       <p className="text-sm lg:text-base">
-        Already have an account?{' '}
+        New user?{' '}
         <Link href="/signup" className="text-primary">
           Sign up
         </Link>

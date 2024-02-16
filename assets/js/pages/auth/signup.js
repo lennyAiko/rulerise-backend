@@ -82,7 +82,7 @@ const Signup = () => {
         />
       </form>
       <p className="text-sm lg:text-base">
-        New user?{' '}
+        Already have an account?{' '}
         <Link href="/signin" className="text-primary">
           Sign in
         </Link>
