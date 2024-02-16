@@ -38,9 +38,13 @@ module.exports = {
       .intercept('incorrect', 'badCombo')
 
     this.req.session.userId = user.id
-    this.req.session.user = user
+    this.req.session.user = {
+      fullName: user.fullName,
+      email: user.email,
+      status: user.status,
+    }
     sails.inertia.share('loggedInUser', user)
-
+    console.log(this.req.session.user)
     // All done.
     return exits.success('/')
   },

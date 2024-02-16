@@ -31,7 +31,13 @@ module.exports = {
       required: true,
     },
   },
+
   customToJSON: function () {
-    return _.omit(this, ['password', 'createdAt', 'updatedAt'])
+    return Object.keys(this).reduce((result, key) => {
+      if (!['password', 'createdAt', 'updatedAt'].includes(key)) {
+        result[key] = this[key]
+      }
+      return result
+    }, {})
   },
 }

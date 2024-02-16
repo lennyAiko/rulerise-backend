@@ -1,5 +1,5 @@
 import TextInput from '@/components/TextInput'
-import { Link, useForm } from '@inertiajs/react'
+import { Link, useForm, usePage } from '@inertiajs/react'
 import { useEffect, useState } from 'react'
 import DefaultButton from '@/components/buttons/DefaultButton'
 

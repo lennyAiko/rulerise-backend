@@ -35,9 +35,12 @@ const Header = () => {
       </div>
 
       <div className="">
-        <div className="rounded-full bg-primary p-1.5 text-sm text-white md:p-2 lg:text-base lg:font-bold">
+        <Link
+          href="/logout"
+          className="rounded-full bg-primary p-1.5 text-sm text-white md:p-2 lg:text-base lg:font-bold"
+        >
           L.C
-        </div>
+        </Link>
       </div>
     </div>
   )
