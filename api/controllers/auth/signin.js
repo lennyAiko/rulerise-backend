@@ -46,6 +46,6 @@ module.exports = {
     sails.inertia.share('loggedInUser', user)
     console.log(this.req.session.user)
     // All done.
-    return exits.success('/')
+    return '/'
   },
 }
