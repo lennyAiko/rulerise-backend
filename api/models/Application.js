@@ -23,18 +23,18 @@ module.exports = {
       type: 'string',
       isEmail: true,
     },
-    location: {
-      type: 'string',
-    },
-    experience: {
-      type: 'string',
-    },
-    educationalBackground: {
-      type: 'string',
-      columnName: 'educational_background',
-    },
-    reference: {
-      type: 'string',
-    },
+    // location: {
+    //   type: 'string',
+    // },
+    // experience: {
+    //   type: 'string',
+    // },
+    // educationalBackground: {
+    //   type: 'string',
+    //   columnName: 'educational_background',
+    // },
+    // reference: {
+    //   type: 'string',
+    // },
   },
 }

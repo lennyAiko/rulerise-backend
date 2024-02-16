@@ -18,18 +18,18 @@ module.exports = {
       type: 'string',
       isEmail: true,
     },
-    location: {
-      type: 'string',
-    },
-    experience: {
-      type: 'string',
-    },
-    educationalBackground: {
-      type: 'string',
-    },
-    reference: {
-      type: 'string',
-    },
+    // location: {
+    //   type: 'string',
+    // },
+    // experience: {
+    //   type: 'string',
+    // },
+    // educationalBackground: {
+    //   type: 'string',
+    // },
+    // reference: {
+    //   type: 'string',
+    // },
     courseId: {
       type: 'string',
       required: true,
@@ -52,10 +52,10 @@ module.exports = {
       lastName,
       phoneNumber,
       email,
-      location,
-      experience,
-      educationalBackground,
-      reference,
+      // location,
+      // experience,
+      // educationalBackground,
+      // reference,
       courseId,
     },
     exits
@@ -66,10 +66,10 @@ module.exports = {
       lastName,
       phoneNumber,
       email,
-      location,
-      experience,
-      educationalBackground,
-      reference,
+      // location,
+      // experience,
+      // educationalBackground,
+      // reference,
     }).fetch()
 
     if (!application) {
