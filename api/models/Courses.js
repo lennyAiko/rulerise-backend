@@ -14,7 +14,7 @@ module.exports = {
     title: {
       type: 'string',
       required: true,
-      // unique: true
+      unique: true,
     },
     description: {
       type: 'string',
@@ -30,8 +30,7 @@ module.exports = {
     },
     learningMode: {
       type: 'string',
-      isIn: ['remote', 'on-site'],
-      defaultsTo: 'in-class',
+      required: true,
     },
     fee: {
       type: 'string',
