@@ -9,7 +9,7 @@ module.exports = {
 
   fn: async function (inputs) {
     // @ts-ignore
-    const courses = await Courses.find({})
+    const courses = await Courses.find({}).populate('facilitators')
 
     // All done.
     return {

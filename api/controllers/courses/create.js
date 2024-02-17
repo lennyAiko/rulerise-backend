@@ -75,12 +75,17 @@ module.exports = {
       fee: inputs.fee,
       level: inputs.level,
       topics: inputs.topics,
-      facilitators: inputs.facilitators,
       category: inputs.category,
     }).fetch()
     if (!course) {
       return exits.badCombo('Could not create course')
     }
+
+    await Courses.addToCollection(
+      course.id,
+      'facilitators',
+      inputs.facilitators
+    )
 
     return exits.success('/courses')
   },
