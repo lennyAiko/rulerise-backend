@@ -118,8 +118,8 @@ const create = ({ facilitators, categories, course }) => {
             className="rounded-lg border p-2 font-bold"
           >
             <option value="">--Select--</option>
-            <option value="on-site">On-site</option>
-            <option value="remote">Remote</option>
+            <option value="Physical lectures">Physical lectures</option>
+            <option value="Live virtual classes">Live virtual training</option>
           </select>
 
           <TextInput
