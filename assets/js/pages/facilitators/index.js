@@ -3,6 +3,7 @@ import FacilitatorLayout from './_components/FacilitatorLayout'
 import { Link, router } from '@inertiajs/react'
 
 export default function Index({ facilitators }) {
+  console.log(facilitators)
   return (
     <FacilitatorLayout>
       <div className="flex flex-col gap-2">

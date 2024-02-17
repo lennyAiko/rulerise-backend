@@ -16,7 +16,9 @@ module.exports = {
 
   fn: async function (inputs, exits) {
     // @ts-ignore
-    const course = await Courses.findOne({ id: this.req.params.id })
+    const course = await Courses.findOne({ id: this.req.params.id }).populate(
+      'facilitators'
+    )
     if (!course) {
       return exits.notFound('Could not find course')
     }
