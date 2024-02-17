@@ -2,7 +2,7 @@
  * Inertia configuration
  * (sails.config.inertia)
  *
- * Use the settings below to configure session integration in your app.
+ * Use   the settings below to configure session integration in your app.
  *
  * For more information on Inertia configuration, visit:
  * https://inertia-sails.sailscasts.com
@@ -15,5 +15,5 @@ module.exports.inertia = {
    *  or a function that returns the said string, number.
    * e.g 4 or () => 4
    */
-  // version: 1,
+  version: 2,
 }
