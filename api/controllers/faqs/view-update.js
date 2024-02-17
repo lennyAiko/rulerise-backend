@@ -4,9 +4,7 @@ module.exports = {
   description: 'Display "Update" page.',
 
   exits: {
-    success: {
-      responseType: 'myRedirect',
-    },
+    success: {},
   },
 
   fn: async function () {

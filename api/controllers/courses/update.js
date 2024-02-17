@@ -54,9 +54,7 @@ module.exports = {
   },
 
   exits: {
-    success: {
-      responseType: 'myRedirect',
-    },
+    success: {},
   },
 
   fn: async function (inputs) {

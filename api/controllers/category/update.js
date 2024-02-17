@@ -16,9 +16,7 @@ module.exports = {
   },
 
   exits: {
-    success: {
-      responseType: 'myRedirect',
-    },
+    success: {},
   },
 
   fn: async function ({ name, image }, exits) {
