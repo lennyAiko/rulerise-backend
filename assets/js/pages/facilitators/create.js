@@ -11,6 +11,7 @@ const create = () => {
   const { data, setData, post } = useForm({
     fullName: '',
     image: '',
+    title: '',
     description: '',
     socials: [],
     courses: [],
@@ -52,7 +53,12 @@ const create = () => {
             value={data.fullName}
             changeData={setData}
           />
-
+          <TextInput
+            id="title"
+            label="Enter title"
+            value={data.title}
+            changeData={setData}
+          />
           <TextInput
             id="image"
             label="Enter image url"

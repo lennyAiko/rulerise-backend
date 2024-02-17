@@ -10,6 +10,7 @@ const view = ({ facilitator }) => {
   const { data, setData, patch } = useForm({
     fullName: facilitator.fullName,
     image: facilitator.image,
+    title: facilitator.title,
     description: facilitator.description,
     socials: facilitator.socials,
     courses: facilitator.courses,
@@ -53,6 +54,14 @@ const view = ({ facilitator }) => {
           value={data.fullName}
           changeData={setData}
         />
+
+        <TextInput
+          id="title"
+          label="Enter title"
+          value={data.title}
+          changeData={setData}
+        />
+
         <TextInput
           id="image"
           label="Enter image url"

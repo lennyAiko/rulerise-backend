@@ -81,6 +81,7 @@ module.exports = {
       return exits.badCombo('Could not create course')
     }
 
+    // @ts-ignore
     await Courses.addToCollection(
       course.id,
       'facilitators',

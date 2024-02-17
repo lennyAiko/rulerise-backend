@@ -15,6 +15,11 @@ module.exports = {
       required: true,
     },
 
+    title: {
+      type: 'string',
+      required: true,
+    },
+
     description: {
       type: 'string',
       required: true,
@@ -37,13 +42,21 @@ module.exports = {
     },
   },
 
-  fn: async function ({ fullName, image, description, socials, courses }) {
+  fn: async function ({
+    fullName,
+    image,
+    description,
+    socials,
+    courses,
+    title,
+  }) {
     // @ts-ignore
     const facilitator = await Facilitators.create({
       fullName,
       image,
       description,
       socials,
+      title,
     }).fetch()
 
     // @ts-ignore

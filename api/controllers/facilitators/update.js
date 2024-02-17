@@ -15,6 +15,11 @@ module.exports = {
       required: true,
     },
 
+    title: {
+      type: 'string',
+      required: true,
+    },
+
     description: {
       type: 'string',
       required: true,
@@ -33,7 +38,14 @@ module.exports = {
 
   exits: {},
 
-  fn: async function ({ fullName, image, description, socials, courses }) {
+  fn: async function ({
+    fullName,
+    image,
+    description,
+    socials,
+    courses,
+    title,
+  }) {
     // @ts-ignore
     const facilitator = await Facilitators.updateOne({
       id: this.req.params.id,
@@ -41,6 +53,7 @@ module.exports = {
       fullName,
       image,
       description,
+      title,
       socials,
     })
 
