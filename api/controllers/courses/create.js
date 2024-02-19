@@ -45,7 +45,6 @@ module.exports = {
     },
     facilitators: {
       type: 'ref',
-      required: true,
     },
     category: {
       type: 'string',
@@ -81,12 +80,15 @@ module.exports = {
       return exits.badCombo('Could not create course')
     }
 
+    if (!inputs.facilitators) {
+      await Courses.addToCollection(
+        course.id,
+        'facilitators',
+        inputs.facilitators
+      )
+    }
+
     // @ts-ignore
-    await Courses.addToCollection(
-      course.id,
-      'facilitators',
-      inputs.facilitators
-    )
 
     return exits.success('/courses')
   },

@@ -62,6 +62,7 @@ const create = ({ facilitators, categories, course }) => {
     patch(`/courses/${course.id}`)
   }
 
+  console.log(course)
   return (
     <CoursesLayout>
       <div className="">
@@ -170,6 +171,9 @@ const create = ({ facilitators, categories, course }) => {
           <label htmlFor="facilitator" className="pl-2">
             Update facilitators:
           </label>
+          <p className="pl-2 text-sm lg:text-base">
+            Selected: <span className="font-bold">{course.facilitators}</span>
+          </p>
           <select
             id="facilitator"
             multiple

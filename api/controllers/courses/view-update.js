@@ -11,7 +11,7 @@ module.exports = {
     // @ts-ignore
     const course = await Courses.findOne({
       id: this.req.params.id,
-    })
+    }).populate('facilitators')
 
     // @ts-ignore
     const facilitators = await Facilitators.find({})
