@@ -19,9 +19,6 @@ module.exports = {
     success: {
       responseType: 'redirect',
     },
-    badCombo: {
-      responseType: 'badRequest',
-    },
   },
 
   fn: async function (inputs, exits) {
@@ -43,9 +40,10 @@ module.exports = {
       email: user.email,
       status: user.status,
     }
+
     sails.inertia.share('loggedInUser', user)
     // console.log(this.req.session.user)
     // All done.
-    return '/'
+    return exits.success('/')
   },
 }

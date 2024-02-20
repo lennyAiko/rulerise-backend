@@ -3,5 +3,5 @@ module.exports = function (req, res, proceed) {
     return res.redirect('/signin')
   }
 
-  proceed()
+  return proceed()
 }

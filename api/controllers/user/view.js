@@ -6,10 +6,12 @@ module.exports = {
   inputs: {},
 
   exits: {
-    success: {},
+    success: {
+      responseType: 'redirect',
+    },
   },
 
-  fn: async function (inputs) {
+  fn: async function (inputs, exits) {
     const users = await User.find({})
     // All done.
     return sails.inertia.render('user/view', { users })

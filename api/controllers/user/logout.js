@@ -5,12 +5,16 @@ module.exports = {
 
   inputs: {},
 
-  exits: {},
+  exits: {
+    success: {
+      responseType: 'redirect',
+    },
+  },
 
-  fn: async function (inputs) {
+  fn: async function (inputs, exits) {
     sails.inertia.flushShared('loggedInUser')
     delete this.req.session.userId
     // All done.
-    return sails.inertia.location('/signin')
+    return exits.success('/signin')
   },
 }
