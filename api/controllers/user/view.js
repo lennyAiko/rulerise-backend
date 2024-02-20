@@ -13,6 +13,7 @@ module.exports = {
 
   fn: async function (inputs, exits) {
     const users = await User.find({})
+
     // All done.
     return sails.inertia.render('user/view', { users })
   },
