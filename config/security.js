@@ -29,7 +29,7 @@ module.exports.security = {
   cors: {
     allRoutes: true,
     allowOrigins: [
-      'http://localhost:3000',
+      'http://localhost:8949',
       'https://rulerise.vercel.app',
       'https://rulerise.com',
       'https://www.rulerise.com',
