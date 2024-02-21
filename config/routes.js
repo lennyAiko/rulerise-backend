@@ -77,6 +77,10 @@ module.exports.routes = {
   'GET /user': 'user/view',
   'GET /logout': 'user/logout',
 
+  // Emails
+  'GET /emails': 'emails/view',
+  'DELETE /emails/:id': 'emails/delete',
+
   // API
   'GET /api/courses': 'courses/api/fetch',
   'GET /api/courses/:id': 'courses/api/view',
@@ -87,4 +91,5 @@ module.exports.routes = {
   'POST /api/contacts': 'contact/api/create',
   'POST /api/talents': 'talent/api/create',
   'POST /api/stripe': 'stripe',
+  'POST /api/emails': 'emails/api/create',
 }
