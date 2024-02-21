@@ -23,7 +23,7 @@ module.exports = {
   fn: async function (inputs, exits) {
     const email = inputs.email.toLowerCase()
 
-    const receivedEmail = await Emails.create(email).fetch()
+    const receivedEmail = await Emails.create({ email }).fetch()
 
     if (!receivedEmail) {
       return exits.error({
