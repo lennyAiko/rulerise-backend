@@ -35,7 +35,12 @@ module.exports = {
 
     const password = await sails.helpers.passwords.hashPassword(hash)
 
-    const user = await User.create({ fullName, email, password }).fetch()
+    const user = await User.create({
+      fullName,
+      email,
+      password,
+      status: false,
+    }).fetch()
 
     if (!user) {
       return exits.badCombo({

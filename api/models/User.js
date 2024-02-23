@@ -21,9 +21,8 @@ module.exports = {
     },
 
     status: {
-      type: 'string',
-      isIn: ['approved', 'disapproved'],
-      defaultsTo: 'disapproved',
+      type: 'boolean',
+      required: true,
     },
 
     password: {

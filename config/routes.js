@@ -76,6 +76,7 @@ module.exports.routes = {
   // User
   'GET /user': 'user/view',
   'GET /logout': 'user/logout',
+  'PATCH /user/:id': 'user/update',
 
   // Emails
   'GET /emails': 'emails/view',
