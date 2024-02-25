@@ -185,7 +185,7 @@ module.exports = {
     adapter: '@sailshq/connect-redis',
     url: process.env.REDIS_URL,
     cookie: {
-      secure: true,
+      // secure: true,
       maxAge: 24 * 60 * 60 * 1000, // 24 hours
     },
   },

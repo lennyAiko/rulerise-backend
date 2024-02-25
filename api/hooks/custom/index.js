@@ -22,11 +22,15 @@ module.exports = function defineCustomHook(sails) {
             if (!req.session.models) {
               req.session.models = await sails.helpers.getModels()
               sails.inertia.share('models', req.session.models)
-              return proceed()
             } else {
               sails.inertia.share('models', req.session.models)
-              return proceed()
             }
+
+            if (req.session.me) {
+              sails.inertia.share('loggedInUser', req.session.me)
+            }
+
+            return proceed()
           },
         },
       },

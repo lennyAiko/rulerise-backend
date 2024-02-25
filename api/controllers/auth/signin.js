@@ -53,7 +53,6 @@ module.exports = {
 
     this.req.flash('message', 'Login successful')
 
-    sails.inertia.share('loggedInUser', user)
     // All done.
     return exits.success('/')
   },
