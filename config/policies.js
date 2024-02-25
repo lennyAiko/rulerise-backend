@@ -15,9 +15,7 @@ module.exports.policies = {
    * (`true` allows public access)                                            *
    *                                                                          *
    ***************************************************************************/
-  '*': true,
-  // '*': ['share-path', 'is-authenticated'],
-
+  // '*': true,
   // Auth
   'auth/signin': true,
   'auth/signup': true,
@@ -32,4 +30,15 @@ module.exports.policies = {
   'facilitators/api/fetch': true,
   'faqs/api/fetch': true,
   'talent/api/create': true,
+
+  'dashboard/*': ['share-path', 'is-authenticated', 'is-approved'],
+  'applications/*': ['share-path', 'is-authenticated', 'is-approved'],
+  'category/*': ['share-path', 'is-authenticated', 'is-approved'],
+  'contact/*': ['share-path', 'is-authenticated', 'is-approved'],
+  'courses/*': ['share-path', 'is-authenticated', 'is-approved'],
+  'emails/*': ['share-path', 'is-authenticated', 'is-approved'],
+  'facilitators/*': ['share-path', 'is-authenticated', 'is-approved'],
+  'faqs/*': ['share-path', 'is-authenticated', 'is-approved'],
+  'talent/*': ['share-path', 'is-authenticated', 'is-approved'],
+  'user/*': ['share-path', 'is-authenticated', 'is-approved'],
 }

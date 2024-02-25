@@ -3,8 +3,6 @@ import { Link, usePage } from '@inertiajs/react'
 const Header = () => {
   const { pathName, loggedInUser } = usePage().props
 
-  // console.log(loggedInUser)
-
   return (
     <div className="sticky top-0 z-50 flex h-fit w-full items-center justify-between bg-white p-2 shadow-lg">
       <Link href="/">
@@ -34,14 +32,20 @@ const Header = () => {
         </Link>
       </div>
 
-      <div className="">
-        <Link
-          href="/logout"
-          className="rounded-full bg-primary p-1.5 text-sm text-white md:p-2 lg:text-base lg:font-bold"
-        >
-          L.C
-        </Link>
-      </div>
+      <Link
+        href="/logout"
+        className="flex items-center justify-center rounded-full bg-primary p-1.5 text-sm text-white md:p-2.5 lg:text-base lg:font-bold"
+      >
+        {
+          // @ts-ignore
+          loggedInUser.fullName.split(' ')[0].split('')[0]
+        }
+
+        {
+          // @ts-ignore
+          loggedInUser.fullName.split(' ')[1]?.split('')[0]
+        }
+      </Link>
     </div>
   )
 }

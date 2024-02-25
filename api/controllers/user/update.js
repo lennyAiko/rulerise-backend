@@ -13,7 +13,6 @@ module.exports = {
   exits: {},
 
   fn: async function ({ status }) {
-    console.log(this.req.params.id, status)
     const updatedUser = await User.updateOne({ id: this.req.params.id }).set({
       status,
     })
@@ -21,6 +20,8 @@ module.exports = {
     if (!updatedUser) {
       return this.res.notFound()
     }
+
+    this.req.session.userStatus = updatedUser.status
     // All done.
     return sails.inertia.location('/user')
   },

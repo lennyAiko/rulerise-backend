@@ -32,17 +32,17 @@ module.exports = {
 
     await sails.helpers.passwords
       .checkPassword(inputs.password, user.password)
+      // @ts-ignore
       .intercept('incorrect', 'badCombo')
 
     this.req.session.userId = user.id
-    this.req.session.user = {
+    this.req.session.me = {
+      id: user.id,
       fullName: user.fullName,
-      email: user.email,
       status: user.status,
     }
 
     sails.inertia.share('loggedInUser', user)
-    // console.log(this.req.session.user)
     // All done.
     return exits.success('/')
   },
