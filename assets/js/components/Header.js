@@ -38,12 +38,12 @@ const Header = () => {
       >
         {
           // @ts-ignore
-          loggedInUser.fullName.split(' ')[0].split('')[0]
+          loggedInUser?.fullName?.split(' ')[0].split('')[0]
         }
 
         {
           // @ts-ignore
-          loggedInUser.fullName.split(' ')[1]?.split('')[0]
+          loggedInUser?.fullName?.split(' ')[1]?.split('')[0]
         }
       </Link>
     </div>

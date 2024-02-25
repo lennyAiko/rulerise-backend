@@ -1,7 +1,7 @@
 module.exports = async function (req, res, proceed) {
   if (req.session.userId) {
-    sails.log('user is authenticated')
     return proceed()
   }
+  req.flash('message', 'Please login first')
   return res.redirect('/signin')
 }

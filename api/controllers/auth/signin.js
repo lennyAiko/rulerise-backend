@@ -19,6 +19,9 @@ module.exports = {
     success: {
       responseType: 'redirect',
     },
+    badCombo: {
+      responseType: 'badRequest',
+    },
   },
 
   fn: async function (inputs, exits) {
@@ -27,13 +30,19 @@ module.exports = {
     })
 
     if (!user) {
-      throw 'badCombo'
+      this.req.flash('error', 'User not found')
+      exits.success('/signin')
     }
 
-    await sails.helpers.passwords
-      .checkPassword(inputs.password, user.password)
-      // @ts-ignore
-      .intercept('incorrect', 'badCombo')
+    try {
+      await sails.helpers.passwords
+        .checkPassword(inputs.password, user.password)
+        // @ts-ignore
+        .intercept('incorrect', 'badCombo')
+    } catch (err) {
+      this.req.flash('error', 'Incorrect password')
+      exits.success('/signin')
+    }
 
     this.req.session.userId = user.id
     this.req.session.me = {
@@ -42,7 +51,7 @@ module.exports = {
       status: user.status,
     }
 
-    this.req.flash('messages', 'Welcome back!')
+    this.req.flash('message', 'Login successful')
 
     sails.inertia.share('loggedInUser', user)
     // All done.

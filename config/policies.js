@@ -31,7 +31,7 @@ module.exports.policies = {
   'faqs/api/fetch': true,
   'talent/api/create': true,
 
-  'dashboard/*': ['share-path'],
+  'dashboard/*': ['share-path', 'is-authenticated', 'is-approved'],
   'applications/*': ['share-path', 'is-authenticated', 'is-approved'],
   'category/*': ['share-path', 'is-authenticated', 'is-approved'],
   'contact/*': ['share-path', 'is-authenticated', 'is-approved'],
