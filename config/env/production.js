@@ -50,10 +50,10 @@ module.exports = {
       adapter: require('sails-mongo'),
       url: process.env.DB_URL,
     },
-    // logDB: {
-    //   adapter: require('sails-mongo'),
-    //   url: process.env.LOG_URL,
-    // },
+    logDB: {
+      adapter: require('sails-mongo'),
+      url: process.env.LOG_URL,
+    },
     //--------------------------------------------------------------------------
     //  /\   To avoid checking it in to version control, you might opt to set
     //  ||   sensitive credentials like `url` using an environment variable.
