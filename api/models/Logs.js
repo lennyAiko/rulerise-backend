@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-  datastore: 'logDB',
+  // datastore: 'logDB',
 
   attributes: {
     log: {
