@@ -19,6 +19,7 @@ module.exports = function defineCustomHook(sails) {
         'GET /*': {
           skipAssets: true,
           fn: async function (req, res, proceed) {
+            const timeStamp = await sails.helpers.getTimestamp()
             if (!req.session.models) {
               req.session.models = await sails.helpers.getModels()
               sails.inertia.share('models', req.session.models)
@@ -28,8 +29,60 @@ module.exports = function defineCustomHook(sails) {
 
             if (req.session.me) {
               sails.inertia.share('loggedInUser', req.session.me)
+              sails.log(
+                `[${timeStamp}]: ${req.session.me.fullName} visited ${req.url}.`
+              )
+              await Logs.create({
+                log: `[${timeStamp}]: ${req.session.me.fullName} visited ${req.url}.`,
+              })
             }
 
+            return proceed()
+          },
+        },
+        'POST /*': {
+          skipAssets: true,
+          fn: async function (req, res, proceed) {
+            const timeStamp = await sails.helpers.getTimestamp()
+            if (req.session.me) {
+              const payload = JSON.stringify(req.body)
+              sails.log(
+                `[${timeStamp}]: ${req.session.me.fullName} visited ${req.url} to create ${payload}.`
+              )
+              await Logs.create({
+                log: `[${timeStamp}]: ${req.session.me.fullName} visited ${req.url} to create ${payload}.`,
+              })
+            }
+            return proceed()
+          },
+        },
+        'PATCH /*': {
+          skipAssets: true,
+          fn: async function (req, res, proceed) {
+            const timeStamp = await sails.helpers.getTimestamp()
+            if (req.session.me) {
+              const payload = JSON.stringify(req.body)
+              sails.log(
+                `[${timeStamp}]: ${req.session.me.fullName} visited ${req.url} to update ${payload}.`
+              )
+              await Logs.create({
+                log: `[${timeStamp}]: ${req.session.me.fullName} visited ${req.url} to update ${payload}.`,
+              })
+            }
+            return proceed()
+          },
+        },
+        'DELETE /*': {
+          skipAssets: true,
+          fn: async function (req, res, proceed) {
+            const timeStamp = await sails.helpers.getTimestamp()
+            if (req.session.me) {
+              const payload = JSON.stringify(req.params)
+              sails.log()
+              await Logs.create({
+                log: `[${timeStamp}]: ${req.session.me.fullName} visited ${req.url} to delete ${payload}.`,
+              })
+            }
             return proceed()
           },
         },

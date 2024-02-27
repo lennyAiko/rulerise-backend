@@ -50,6 +50,10 @@ module.exports = {
       adapter: require('sails-mongo'),
       url: process.env.DB_URL,
     },
+    // logDB: {
+    //   adapter: require('sails-mongo'),
+    //   url: process.env.LOG_URL,
+    // },
     //--------------------------------------------------------------------------
     //  /\   To avoid checking it in to version control, you might opt to set
     //  ||   sensitive credentials like `url` using an environment variable.
@@ -185,7 +189,7 @@ module.exports = {
     adapter: '@sailshq/connect-redis',
     url: process.env.REDIS_URL,
     cookie: {
-      // secure: true,
+      secure: true,
       maxAge: 24 * 60 * 60 * 1000, // 24 hours
     },
   },
