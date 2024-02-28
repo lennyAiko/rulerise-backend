@@ -91,13 +91,16 @@ module.exports = {
       })
     }
 
-    // @ts-ignore
-    const url = await sails.helpers.paymentUrl(course.priceId)
+    let url
+    if (courseId.length > 0) {
+      // @ts-ignore
+      url = await sails.helpers.paymentUrl(course.priceId)
+    }
     // All done.
     return exits.success({
       status: 200,
       message: 'Successfully created an application.',
-      url,
+      url: url || null,
     })
   },
 }
