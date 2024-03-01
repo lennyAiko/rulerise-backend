@@ -20,6 +20,10 @@ module.exports.session = {
   secret: '1691d5b059def6240b9bd80235d132dc',
   adapter: '@sailshq/connect-redis',
   url: 'redis://localhost:6379',
+
+  // secret: process.env.REDIS_SECRET,
+  // adapter: '@sailshq/connect-redis',
+  // url: process.env.REDIS_URL,
   /***************************************************************************
    *                                                                          *
    * Customize when built-in session support will be skipped.                 *
