@@ -26,6 +26,11 @@ module.exports = {
       type: 'string',
     },
 
+    time: {
+      type: 'number',
+      required: true,
+    },
+
     author: {
       model: 'user',
     },

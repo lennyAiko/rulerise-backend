@@ -5,7 +5,7 @@ import DefaultButton from '@/components/buttons/DefaultButton'
 
 const Signup = () => {
   // @ts-ignore
-  const { message, error } = usePage().props.flash
+  // const { message, error } = usePage()?.props?.flash
 
   const { data, setData, post } = useForm({
     email: '',
@@ -83,8 +83,8 @@ const Signup = () => {
           Sign up
         </Link>
       </p>
-      {message.length > 0 && <p className="text-sm text-red-600">{message}</p>}
-      {error.length > 0 && <p className="text-sm text-red-600">{error}</p>}
+      {/* {message.length > 0 && <p className="text-sm text-red-600">{message}</p>}
+      {error.length > 0 && <p className="text-sm text-red-600">{error}</p>} */}
     </div>
   )
 }

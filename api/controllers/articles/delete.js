@@ -1,28 +1,16 @@
 module.exports = {
-
-
   friendlyName: 'Delete',
-
 
   description: 'Delete blog.',
 
+  inputs: {},
 
-  inputs: {
-
-  },
-
-
-  exits: {
-
-  },
-
+  exits: {},
 
   fn: async function (inputs) {
+    await Articles.destroyOne({ id: this.req.params.id })
 
     // All done.
-    return;
-
-  }
-
-
-};
+    return sails.inertia.location('/category')
+  },
+}

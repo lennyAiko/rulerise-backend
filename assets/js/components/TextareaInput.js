@@ -1,7 +1,14 @@
 import 'quill/dist/quill.snow.css'
 import ReactQuill from 'react-quill'
 
-const TextareaInput = ({ id, label, value, changeData, className = '' }) => {
+const TextareaInput = ({
+  id,
+  label,
+  value,
+  changeData,
+  className = '',
+  height = '150px',
+}) => {
   const modules = {
     toolbar: [
       [{ size: ['small', false, 'large', 'huge'] }],
@@ -55,7 +62,7 @@ const TextareaInput = ({ id, label, value, changeData, className = '' }) => {
         id={id}
         placeholder="write your content ...."
         onChange={(content) => changeData(id, content)}
-        style={{ height: '150px' }}
+        style={{ height: height }}
         value={value}
         className="mb-20"
       ></ReactQuill>

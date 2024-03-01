@@ -4,9 +4,9 @@ import { toast } from 'react-toastify'
 
 export default function Index({ name }) {
   // @ts-ignore
-  const { message } = usePage().props.flash
+  // const { message } = usePage().props.flash
 
-  if (message.length > 0) toast.success(`${message}`)
+  // if (message.length > 0) toast.success(`${message}`)
 
   return (
     <AppLayout title={name}>

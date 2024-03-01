@@ -1,28 +1,16 @@
 module.exports = {
-
-
   friendlyName: 'Fetch',
-
 
   description: 'Fetch blog.',
 
+  inputs: {},
 
-  inputs: {
-
-  },
-
-
-  exits: {
-
-  },
-
+  exits: {},
 
   fn: async function (inputs) {
+    const articles = await Articles.find({})
 
     // All done.
-    return;
-
-  }
-
-
-};
+    return sails.inertia.render('articles/index', { articles })
+  },
+}

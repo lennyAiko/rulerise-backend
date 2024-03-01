@@ -28,7 +28,7 @@ export default function Create() {
   return (
     <CategoryLayout>
       <div className="flex flex-col gap-2">
-        <h1 className="my-2 mb-2 font-bold">Create category---</h1>
+        <h1 className="my-2 mb-2 font-bold">Create category</h1>
 
         <form className="flex flex-col gap-2">
           <TextInput

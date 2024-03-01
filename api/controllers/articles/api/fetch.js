@@ -1,28 +1,20 @@
 module.exports = {
-
-
   friendlyName: 'Fetch',
-
 
   description: 'Fetch api.',
 
+  inputs: {},
 
-  inputs: {
-
-  },
-
-
-  exits: {
-
-  },
-
+  exits: {},
 
   fn: async function (inputs) {
+    const articles = await Articles.find({}).sort('createdAt DESC')
 
     // All done.
-    return;
-
-  }
-
-
-};
+    return {
+      status: 200,
+      message: 'Successfully fetched articles',
+      data: articles,
+    }
+  },
+}

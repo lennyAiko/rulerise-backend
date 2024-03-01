@@ -32,7 +32,15 @@ module.exports = {
   },
 
   fn: async function ({ title, summary, content, img }) {
-    await Articles.create({ title, summary, content, img })
+    const readTime = await sails.helpers.getReadTime(content)
+    await Articles.create({
+      title,
+      summary,
+      content,
+      img,
+      time: readTime,
+      author: this.req.session.userId,
+    })
 
     // All done.
     return '/articles'
