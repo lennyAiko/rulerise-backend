@@ -29,11 +29,16 @@ module.exports = {
       type: 'string',
       required: true,
     },
+
+    articles: {
+      collection: 'articles',
+      via: 'author',
+    },
   },
 
   customToJSON: function () {
     return Object.keys(this).reduce((result, key) => {
-      if (!['password', 'createdAt', 'updatedAt'].includes(key)) {
+      if (!['password', 'createdAt', 'updatedAt', 'articles'].includes(key)) {
         result[key] = this[key]
       }
       return result

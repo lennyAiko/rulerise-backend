@@ -85,12 +85,22 @@ module.exports.routes = {
   // Logs
   'GET /logs': 'logs/fetch',
 
+  // Blogs
+  'GET /articles': 'articles/fetch',
+  'POST /articles/create': 'articles/create',
+  'GET /articles/create': 'articles/view-create',
+  'GET /articles/:id': 'articles/view-update',
+  'PATCH /articles/:id': 'articles/update',
+  'DELETE /articles/:id': 'articles/delete',
+
   // API
   'GET /api/courses': 'courses/api/fetch',
   'GET /api/courses/:id': 'courses/api/view',
   'GET /api/categories': 'category/api/fetch',
   'GET /api/faqs': 'faqs/api/fetch',
   'GET /api/facilitators': 'facilitators/api/fetch',
+  'GET /api/articles': 'articles/api/fetch',
+  'GET /api/articles/:id': 'articles/api/view',
   'POST /api/applications': 'applications/api/create',
   'POST /api/contacts': 'contact/api/create',
   'POST /api/talents': 'talent/api/create',
