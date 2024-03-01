@@ -82,6 +82,9 @@ module.exports.routes = {
   'GET /emails': 'emails/view',
   'DELETE /emails/:id': 'emails/delete',
 
+  // Logs
+  'GET /logs': 'logs/fetch',
+
   // API
   'GET /api/courses': 'courses/api/fetch',
   'GET /api/courses/:id': 'courses/api/view',

@@ -18,8 +18,10 @@ module.exports = function defineCustomHook(sails) {
       before: {
         'GET /*': {
           skipAssets: true,
+          // @ts-ignore
           fn: async function (req, res, proceed) {
             const timeStamp = await sails.helpers.getTimestamp()
+
             if (!req.session.models) {
               req.session.models = await sails.helpers.getModels()
               sails.inertia.share('models', req.session.models)
@@ -29,11 +31,24 @@ module.exports = function defineCustomHook(sails) {
 
             if (req.session.me) {
               sails.inertia.share('loggedInUser', req.session.me)
-              sails.log(
-                `[${timeStamp}]: ${req.session.me.fullName} visited ${req.url}.`
-              )
-              await Logs.create({
-                log: `[${timeStamp}]: ${req.session.me.fullName} visited ${req.url}.`,
+
+              if (!req.url.includes('/logs')) {
+                // @ts-ignore
+                await Logs.create({
+                  log: `[${timeStamp}]: ${req.session.me.fullName} visited ${req.url}.`,
+                })
+              }
+            }
+
+            // @ts-ignore
+            const logLength = await Logs.count()
+
+            if (logLength > 200) {
+              // @ts-ignore
+              await Logs.destroy({
+                createdAt: {
+                  '<': new Date().getTime(),
+                },
               })
             }
 
@@ -42,46 +57,55 @@ module.exports = function defineCustomHook(sails) {
         },
         'POST /*': {
           skipAssets: true,
+          // @ts-ignore
           fn: async function (req, res, proceed) {
             const timeStamp = await sails.helpers.getTimestamp()
             if (req.session.me) {
               const payload = JSON.stringify(req.body)
-              sails.log(
-                `[${timeStamp}]: ${req.session.me.fullName} visited ${req.url} to create ${payload}.`
-              )
-              await Logs.create({
-                log: `[${timeStamp}]: ${req.session.me.fullName} visited ${req.url} to create ${payload}.`,
-              })
+
+              if (!req.url.includes('/logs')) {
+                // @ts-ignore
+                await Logs.create({
+                  log: `[${timeStamp}]: ${req.session.me.fullName} visited ${req.url} to create ${payload}.`,
+                })
+                // @ts-ignore
+              }
             }
             return proceed()
           },
         },
         'PATCH /*': {
           skipAssets: true,
+          // @ts-ignore
           fn: async function (req, res, proceed) {
             const timeStamp = await sails.helpers.getTimestamp()
             if (req.session.me) {
               const payload = JSON.stringify(req.body)
-              sails.log(
-                `[${timeStamp}]: ${req.session.me.fullName} visited ${req.url} to update ${payload}.`
-              )
-              await Logs.create({
-                log: `[${timeStamp}]: ${req.session.me.fullName} visited ${req.url} to update ${payload}.`,
-              })
+              if (!req.url.includes('/logs')) {
+                // @ts-ignore
+                await Logs.create({
+                  log: `[${timeStamp}]: ${req.session.me.fullName} visited ${req.url} to update ${payload}.`,
+                })
+                // @ts-ignore
+              }
             }
             return proceed()
           },
         },
         'DELETE /*': {
           skipAssets: true,
+          // @ts-ignore
           fn: async function (req, res, proceed) {
             const timeStamp = await sails.helpers.getTimestamp()
             if (req.session.me) {
               const payload = JSON.stringify(req.params)
-              sails.log()
-              await Logs.create({
-                log: `[${timeStamp}]: ${req.session.me.fullName} visited ${req.url} to delete ${payload}.`,
-              })
+              if (!req.url.includes('/logs')) {
+                // @ts-ignore
+                await Logs.create({
+                  log: `[${timeStamp}]: ${req.session.me.fullName} visited ${req.url} to delete ${payload}.`,
+                })
+                // @ts-ignore
+              }
             }
             return proceed()
           },
