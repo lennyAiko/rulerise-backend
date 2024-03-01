@@ -46,6 +46,7 @@ interface Helper {
 }
 interface EmailParams {
   mailer?: string
+  layout: boolean
   to: string
   cc?: string | array<string>
   bcc?: string | array<string>

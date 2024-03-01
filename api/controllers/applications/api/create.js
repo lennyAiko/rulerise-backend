@@ -96,6 +96,23 @@ module.exports = {
       // @ts-ignore
       url = await sails.helpers.paymentUrl(course.priceId)
     }
+
+    try {
+      await sails.helpers.mail.send.with({
+        to: 'lennox.c@bloocodetechnology.com',
+        template: 'email-application-notification',
+        subject: 'New Application',
+        templateData: {
+          fullName: `${firstName} ${lastName}`,
+          course: course.title,
+        },
+        layout: false,
+      })
+      sails.log('mail sent successfully')
+    } catch (err) {
+      sails.log(err)
+    }
+
     // All done.
     return exits.success({
       status: 200,
