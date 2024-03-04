@@ -30,6 +30,7 @@ module.exports.security = {
     allRoutes: true,
     allowOrigins: [
       'http://localhost:8949',
+      'http://192.168.0.184:8949',
       'https://rulerise.vercel.app',
       'https://rulerise.com',
       'https://www.rulerise.com',
