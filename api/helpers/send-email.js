@@ -37,6 +37,7 @@ module.exports = {
       'adebayooluyemi4@gmail.com',
       'bolafunmi@yahoo.com',
       'lennyaiko17@gmail.com',
+      'care@rulerise.com',
     ]
 
     try {

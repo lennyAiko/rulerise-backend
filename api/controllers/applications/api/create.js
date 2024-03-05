@@ -97,6 +97,7 @@ module.exports = {
       url = await sails.helpers.paymentUrl(course.priceId)
     }
 
+    // @ts-ignore
     await sails.helpers.sendEmail(
       {
         fullName: `${firstName} ${lastName}`,

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Talent Notification</title>
+  </head>
+  <body>
+    <h2 class="">Email Notification</h2>
+
+    <p class="">
+      A company with name <%= company.fullName %> has requested for one of
+      Rulerise talent.
+    </p>
+
+    <p class="">They are based in: <%= company.companyLocation %>.</p>
+
+    <p class="">
+      Their email address is: <%= company.companyEmail %> and website is: <%=
+      company.companyWebsite %>
+    </p>
+
+    <div class="">
+      <h2 class="">Talent Description</h2>
+
+      <p class="">Role: <%= company.talentToHire %></p>
+      <p class="">Employment Type: <%= company.employmentType %></p>
+      <p class="">Comment: <%= company.comment %></p>
+    </div>
+
+    <p class="">Rulerise &copy;</p>
+  </body>
+</html>

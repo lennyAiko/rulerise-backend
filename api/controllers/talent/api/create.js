@@ -81,6 +81,17 @@ module.exports = {
         message: 'Failed to create a talent request.',
       })
     }
+
+    // @ts-ignore
+    await sails.helpers.sendEmail(
+      {
+        company: details,
+      },
+      'Talent Request',
+      'email-talent-notification',
+      false
+    )
+
     // All done.
     return exits.success({
       status: 200,
