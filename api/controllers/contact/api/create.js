@@ -42,6 +42,17 @@ module.exports = {
         message: 'Failed to create a contact application.',
       })
     }
+
+    // @ts-ignore
+    await sails.helpers.sendEmail(
+      {
+        contact: details,
+      },
+      'Contact Request',
+      'email-contact-notification',
+      false
+    )
+
     // All done.
     return exits.success({
       status: 200,
