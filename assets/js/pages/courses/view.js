@@ -32,6 +32,12 @@ const create = ({ facilitators, categories, course }) => {
     setTopicFields([...topicFields, { value: '' }])
   }
 
+  const handleRemoveInput = (e) => {
+    e.preventDefault()
+    if (topicFields.length === 1) return
+    setTopicFields(topicFields.slice(0, -1))
+  }
+
   useEffect(() => {
     setTopicFields(data.topics)
   }, [])
@@ -230,13 +236,24 @@ const create = ({ facilitators, categories, course }) => {
             </div>
           ))}
 
-          <button
-            onClick={handleAddInput}
-            disabled={topicFields.length === 19}
-            className="w-fit rounded-lg bg-primary p-2 text-sm text-white hover:bg-primary/80 lg:text-base"
-          >
-            Add Topic
-          </button>
+          <div className="my-3 flex items-center gap-2">
+            <button
+              onClick={handleAddInput}
+              disabled={topicFields.length === 19}
+              className="w-fit rounded-lg bg-primary p-2 text-sm text-white hover:bg-primary/80 lg:text-base"
+            >
+              Add Topic
+            </button>
+
+            <button
+              onClick={handleRemoveInput}
+              disabled={topicFields.length === 19}
+              className="w-fit rounded-lg bg-primary p-2 text-sm text-white hover:bg-primary/80 lg:text-base"
+            >
+              Remove Topic
+            </button>
+          </div>
+
           <div className="flex gap-2">
             <button
               type="submit"

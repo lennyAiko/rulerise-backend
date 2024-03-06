@@ -3,6 +3,7 @@ import CoursesLayout from './_components/CoursesLayout'
 import { useEffect, useState } from 'react'
 import TextInput from '@/components/TextInput'
 import TextareaInput from '@/components/TextareaInput'
+import { FiMinusCircle } from 'react-icons/fi'
 
 const create = ({ facilitators, categories }) => {
   const [topicFields, setTopicFields] = useState([{ value: '' }])
@@ -30,6 +31,12 @@ const create = ({ facilitators, categories }) => {
     e.preventDefault()
     if (topicFields.length === 19) return
     setTopicFields([...topicFields, { value: '' }])
+  }
+
+  const handleRemoveInput = (e) => {
+    e.preventDefault()
+    if (topicFields.length === 1) return
+    setTopicFields(topicFields.slice(0, -1))
   }
 
   const handleInputChange = (index, event) => {
@@ -211,24 +218,35 @@ const create = ({ facilitators, categories }) => {
               <label className="pl-2" htmlFor={`topic${index}`}>
                 Topic {index + 1}
               </label>
+
               <input
                 type="text"
                 value={input.value}
                 onChange={(e) => handleInputChange(index, e)}
                 id={`topic${index}`}
                 name={`topic${index}`}
-                className={`rounded-lg border py-2 pl-3 font-bold`}
+                className={`w-full rounded-lg border py-2 pl-3 font-bold`}
               />
             </div>
           ))}
 
-          <button
-            onClick={handleAddInput}
-            disabled={topicFields.length === 19}
-            className="w-fit rounded-lg bg-primary p-2 text-sm text-white hover:bg-primary/80 lg:text-base"
-          >
-            Add Topic
-          </button>
+          <div className="flex items-center gap-2 ">
+            <button
+              onClick={handleAddInput}
+              disabled={topicFields.length === 19}
+              className="w-fit rounded-lg bg-primary p-2 text-sm text-white hover:bg-primary/80 lg:text-base"
+            >
+              Add Topic
+            </button>
+
+            <button
+              onClick={handleRemoveInput}
+              disabled={topicFields.length === 19}
+              className="w-fit rounded-lg bg-primary p-2 text-sm text-white hover:bg-primary/80 lg:text-base"
+            >
+              Remove Topic
+            </button>
+          </div>
 
           <button
             type="submit"
