@@ -91,22 +91,27 @@ module.exports = {
       })
     }
 
+    // @ts-ignore
+    // await sails.helpers.sendEmail(
+    //   {
+    //     fullName: `${firstName} ${lastName}`,
+    //     course: course.title,
+    //   },
+    //   'Application Received',
+    //   'email-application-notification',
+    //   false
+    // )
+
+    this.req.session.application = {
+      fullName: `${firstName} ${lastName}`,
+      course: course.title,
+    }
+
     let url
     if (courseId.length > 0) {
       // @ts-ignore
       url = await sails.helpers.paymentUrl(course.priceId)
     }
-
-    // @ts-ignore
-    await sails.helpers.sendEmail(
-      {
-        fullName: `${firstName} ${lastName}`,
-        course: course.title,
-      },
-      'Application Received',
-      'email-application-notification',
-      false
-    )
 
     // All done.
     return exits.success({

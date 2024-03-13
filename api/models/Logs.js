@@ -6,8 +6,6 @@
  */
 
 module.exports = {
-  datastore: 'logDB',
-
   attributes: {
     log: {
       type: 'string',

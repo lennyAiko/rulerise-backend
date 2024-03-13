@@ -15,6 +15,25 @@ module.exports = function defineCustomHook(sails) {
     },
 
     routes: {
+      after: {
+        'POST /api/applications': {
+          skipAssets: true,
+          fn: async function (req, res, proceed) {
+            console.log(req.session)
+            const application = req.session?.application
+            await sails.helpers.sendEmail(
+              {
+                fullName: application.fullName,
+                course: application.course,
+              },
+              'Application Received',
+              'email-application-notification',
+              false
+            )
+            proceed()
+          },
+        },
+      },
       before: {
         'GET /*': {
           skipAssets: true,
