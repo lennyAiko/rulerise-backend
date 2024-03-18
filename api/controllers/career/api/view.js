@@ -18,6 +18,6 @@ module.exports = {
     const career = await Career.findOne({ id: _id })
 
     // All done.
-    return { message: 'Successfully fetched career', career }
+    return career
   },
 }

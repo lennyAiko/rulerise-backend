@@ -13,7 +13,7 @@ module.exports = {
 
     try {
       // @ts-ignore
-      careers = await Category.find({})
+      careers = await Career.find({})
       message = 'Successfully fetched careers'
     } catch (err) {
       console.log(err)
