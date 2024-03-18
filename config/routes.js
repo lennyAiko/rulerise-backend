@@ -34,6 +34,14 @@ module.exports.routes = {
   'GET /category/:id': 'category/view-update',
   'DELETE /category/:id': 'category/delete',
 
+  // Career
+  'POST /career/create': 'career/create',
+  'GET /career/create': 'career/view-create',
+  'GET /career': 'career/fetch',
+  'PATCH /career/:id': 'career/update',
+  'GET /career/:id': 'career/view-update',
+  'DELETE /career/:id': 'career/delete',
+
   // Faqs
   'GET /faqs': 'faqs/fetch',
   'POST /faqs/create': 'faqs/create',
@@ -97,6 +105,9 @@ module.exports.routes = {
   'GET /api/courses': 'courses/api/fetch',
   'GET /api/courses/:id': 'courses/api/view',
   'GET /api/categories': 'category/api/fetch',
+  'GET /api/careers': 'category/api/fetch',
+  'GET /api/careers/:id': 'category/api/view',
+  'GET /api/careers/filter': 'category/api/filter',
   'GET /api/faqs': 'faqs/api/fetch',
   'GET /api/facilitators': 'facilitators/api/fetch',
   'GET /api/articles': 'articles/api/fetch',
