@@ -1,57 +1,91 @@
 import { useEffect, useState } from 'react'
-import CategoryLayout from './_components/CategoryLayout'
+import CareerLayout from './_components/CareerLayout'
 import { useForm } from '@inertiajs/react'
 import TextInput from '@/components/TextInput'
 import DefaultButton from '@/components/buttons/DefaultButton'
+import TextareaInput from '@/components/TextareaInput'
 
 export default function Create() {
   const [disabledButton, setDisabledButton] = useState(true)
 
   const { data, setData, post, progress } = useForm({
-    name: '',
-    image: '',
+    title: '',
+    description: '',
+    jobType: '',
+    locationAndFormat: '',
+    dayToDay: '',
+    skillSet: '',
   })
 
   useEffect(() => {
-    if (data.name.length > 3) {
+    if (data.title.length > 3) {
       setDisabledButton(false)
     } else {
       setDisabledButton(true)
     }
-  }, [data.name])
+  }, [data.title])
 
   const submit = (e) => {
     e.preventDefault()
-    post('/category/create')
+    post('/career/create')
   }
 
   return (
-    <CategoryLayout>
+    <CareerLayout>
       <div className="flex flex-col gap-2">
         <h1 className="my-2 mb-2 font-bold">Create category</h1>
 
         <form className="flex flex-col gap-2">
           <TextInput
-            label="Enter category name"
-            value={data.name}
+            label="Enter job title"
+            value={data.title}
             changeData={setData}
-            id="name"
+            id="title"
           />
 
-          <TextInput
-            label="Paste category icon link"
-            value={data.image}
+          <TextareaInput
+            label="Enter job description"
+            value={data.description}
             changeData={setData}
-            id="image"
+            id="description"
           />
 
-          {/* <input
-            type="file"
-            id="file"
-            name="file"
+          <label className="pl-2" htmlFor="learning">
+            Enter job type
+          </label>
+          <select
+            id="jobType"
+            value={data.jobType}
+            className="rounded-lg border p-2 font-bold"
             // @ts-ignore
-            onChange={(e) => setData('image', e.target.files[0])}
-          /> */}
+            onChange={(e) => setData('jobType', e.target.value)}
+          >
+            <option>--choose job type</option>
+            <option value="full-time">Full-time</option>
+            <option value="remote">Remote</option>
+            <option value="hybrid">Hybrid</option>
+          </select>
+
+          <TextareaInput
+            label="Enter location and format"
+            value={data.locationAndFormat}
+            changeData={setData}
+            id="locationAndFormat"
+          />
+
+          <TextareaInput
+            label="Enter day to day instructions"
+            value={data.dayToDay}
+            changeData={setData}
+            id="dayToDay"
+          />
+
+          <TextareaInput
+            label="Enter skill set"
+            value={data.skillSet}
+            changeData={setData}
+            id="skillSet"
+          />
 
           <DefaultButton
             text="Submit"
@@ -62,6 +96,6 @@ export default function Create() {
           />
         </form>
       </div>
-    </CategoryLayout>
+    </CareerLayout>
   )
 }

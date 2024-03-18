@@ -1,36 +1,78 @@
 import { router, useForm } from '@inertiajs/react'
-import CategoryLayout from './_components/CategoryLayout'
+import CareerLayout from './_components/CareerLayout'
 import TextInput from '@/components/TextInput'
 import DefaultButton from '@/components/buttons/DefaultButton'
+import TextareaInput from '@/components/TextareaInput'
 
-const update = ({ category }) => {
+const update = ({ career }) => {
   const { data, setData, patch } = useForm({
-    name: category.name,
-    image: category.image,
+    title: career.title,
+    description: career.description,
+    jobType: career.jobType,
+    locationAndFormat: career.locationAndFormat,
+    dayToDay: career.dayToDay,
+    skillSet: career.skillSet,
   })
 
   const submit = (e) => {
     e.preventDefault()
-    patch(`/category/${category.id}`)
+    patch(`/career/${career.id}`)
   }
 
   return (
-    <CategoryLayout>
-      <h2 className="my-2 mb-2 font-bold">Update category</h2>
+    <CareerLayout>
+      <h2 className="my-2 mb-2 font-bold">Update career</h2>
 
       <form className="mt-2 flex w-full flex-col gap-2 px-3">
         <TextInput
-          id="name"
-          label={'Name'}
-          value={data.name}
+          label="Enter job title"
+          value={data.title}
           changeData={setData}
+          id="title"
         />
 
-        <TextInput
-          id="image"
-          label={'Image URL'}
-          value={data.image}
+        <TextareaInput
+          label="Enter job description"
+          value={data.description}
           changeData={setData}
+          id="description"
+        />
+
+        <label className="pl-2" htmlFor="learning">
+          Enter job type
+        </label>
+        <select
+          id="jobType"
+          value={data.jobType}
+          className="rounded-lg border p-2 font-bold"
+          // @ts-ignore
+          onChange={(e) => setData('jobType', e.target.value)}
+        >
+          <option>--choose job type</option>
+          <option value="full-time">Full-time</option>
+          <option value="remote">Remote</option>
+          <option value="hybrid">Hybrid</option>
+        </select>
+
+        <TextareaInput
+          label="Enter location and format"
+          value={data.locationAndFormat}
+          changeData={setData}
+          id="locationAndFormat"
+        />
+
+        <TextareaInput
+          label="Enter day to day instructions"
+          value={data.dayToDay}
+          changeData={setData}
+          id="dayToDay"
+        />
+
+        <TextareaInput
+          label="Enter skill set"
+          value={data.skillSet}
+          changeData={setData}
+          id="skillSet"
         />
 
         <div className="flex gap-5 p-2">
@@ -40,12 +82,12 @@ const update = ({ category }) => {
             type="submit"
             doThis={(e) => {
               e.preventDefault()
-              router.delete(`/category/${category.id}`)
+              router.delete(`/career/${career.id}`)
             }}
           />
         </div>
       </form>
-    </CategoryLayout>
+    </CareerLayout>
   )
 }
 
