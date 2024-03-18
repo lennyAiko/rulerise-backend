@@ -43,7 +43,7 @@ module.exports = {
     { title, description, locationAndFormat, dayToDay, skillSet, jobType },
     exits
   ) {
-    const category = await Career.updateOne({ id: this.req.params.id }).set({
+    const career = await Career.updateOne({ id: this.req.params.id }).set({
       title,
       description,
       locationAndFormat,

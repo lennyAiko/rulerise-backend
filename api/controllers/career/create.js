@@ -60,6 +60,6 @@ module.exports = {
     })
 
     // All done.
-    return '/category'
+    return '/career'
   },
 }

@@ -18,7 +18,7 @@ export default function Index({ careers }) {
           careers.map((career, index) => (
             <div className="space-y-1.5 lg:mx-4" key={index}>
               <div className="mt-2 flex items-center justify-between text-sm font-light lg:text-base">
-                <p>{career.name}</p>
+                <p>{career.title}</p>
                 <Link
                   href={`/career/${career.id}`}
                   className="rounded-lg bg-primary px-2 py-0.5 text-white"

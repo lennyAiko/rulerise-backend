@@ -33,7 +33,7 @@ export default function Create() {
   return (
     <CareerLayout>
       <div className="flex flex-col gap-2">
-        <h1 className="my-2 mb-2 font-bold">Create category</h1>
+        <h1 className="my-2 mb-2 font-bold">Create career</h1>
 
         <form className="flex flex-col gap-2">
           <TextInput
@@ -60,7 +60,7 @@ export default function Create() {
             // @ts-ignore
             onChange={(e) => setData('jobType', e.target.value)}
           >
-            <option>--choose job type</option>
+            <option>--choose job type--</option>
             <option value="full-time">Full-time</option>
             <option value="remote">Remote</option>
             <option value="hybrid">Hybrid</option>
