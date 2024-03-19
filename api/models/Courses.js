@@ -28,7 +28,18 @@ module.exports = {
       type: 'string',
       required: true,
     },
+    startDate: {
+      columnName: 'start_date',
+      type: 'string',
+      required: true,
+    },
+    endDate: {
+      columnName: 'end_date',
+      type: 'string',
+      required: true,
+    },
     learningMode: {
+      columnName: 'learning_mode',
       type: 'string',
       required: true,
     },

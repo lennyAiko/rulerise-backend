@@ -51,4 +51,8 @@ module.exports.datastores = {
     adapter: require('sails-mongo'),
     url: 'mongodb://localhost:27017/rulerise',
   },
+  cache: {
+    adapter: require('sails-redis'),
+    url: 'redis://localhost:6379',
+  },
 }

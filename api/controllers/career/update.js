@@ -33,6 +33,12 @@ module.exports = {
       type: 'string',
       required: true,
     },
+
+    status: {
+      type: 'string',
+      required: true,
+      isIn: ['open', 'closed'],
+    },
   },
 
   exits: {
@@ -40,7 +46,15 @@ module.exports = {
   },
 
   fn: async function (
-    { title, description, locationAndFormat, dayToDay, skillSet, jobType },
+    {
+      title,
+      description,
+      locationAndFormat,
+      dayToDay,
+      skillSet,
+      jobType,
+      status,
+    },
     exits
   ) {
     const career = await Career.updateOne({ id: this.req.params.id }).set({
@@ -50,6 +64,7 @@ module.exports = {
       dayToDay,
       skillSet,
       jobType,
+      status,
     })
     // All done.
     return sails.inertia.location('/career')

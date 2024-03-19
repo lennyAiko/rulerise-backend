@@ -24,6 +24,14 @@ module.exports = {
       type: 'string',
       required: true,
     },
+    startDate: {
+      type: 'string',
+      required: true,
+    },
+    endDate: {
+      type: 'string',
+      required: true,
+    },
     learningMode: {
       type: 'string',
     },
@@ -66,6 +74,8 @@ module.exports = {
       duration: inputs.duration,
       learningMode: inputs.learningMode,
       priceId: inputs.priceId,
+      startDate: inputs.startDate,
+      endDate: inputs.endDate,
       fee: inputs.fee,
       level: inputs.level,
       topics: inputs.topics,

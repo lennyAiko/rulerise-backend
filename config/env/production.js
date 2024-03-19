@@ -50,6 +50,10 @@ module.exports = {
       adapter: require('sails-mongo'),
       url: process.env.DB_URL,
     },
+    // cache: {
+    //   adapter: 'sails-redis',
+    //   url: process.env.REDIS_URL,
+    // },
     //--------------------------------------------------------------------------
     //  /\   To avoid checking it in to version control, you might opt to set
     //  ||   sensitive credentials like `url` using an environment variable.

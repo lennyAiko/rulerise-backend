@@ -40,5 +40,11 @@ module.exports = {
       type: 'string',
       required: true,
     },
+
+    status: {
+      type: 'string',
+      isIn: ['open', 'closed'],
+      default: 'open',
+    },
   },
 }

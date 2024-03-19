@@ -33,6 +33,12 @@ module.exports = {
       type: 'string',
       required: true,
     },
+
+    status: {
+      type: 'string',
+      required: true,
+      isIn: ['open', 'closed'],
+    },
   },
 
   exits: {
@@ -48,6 +54,7 @@ module.exports = {
     dayToDay,
     skillSet,
     jobType,
+    status,
   }) {
     // @ts-ignore
     await Career.create({
@@ -57,6 +64,7 @@ module.exports = {
       dayToDay,
       skillSet,
       jobType,
+      status,
     })
 
     // All done.

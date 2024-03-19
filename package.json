@@ -26,6 +26,8 @@
     "sails-mongo": "^2.1.0",
     "sails-mysql": "^3.0.1",
     "sails-postgresql": "^5.0.1",
+    "sails-redis": "^1.0.0",
+    "sails-stash": "^0.0.2",
     "skipper": "^0.9.4",
     "stripe": "^14.15.0"
   },

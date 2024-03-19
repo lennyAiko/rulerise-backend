@@ -21,6 +21,8 @@ const create = ({ facilitators, categories }) => {
     topics: [],
     facilitators: [],
     category: '',
+    startDate: '',
+    endDate: '',
   })
 
   useEffect(() => {
@@ -118,7 +120,7 @@ const create = ({ facilitators, categories }) => {
                 e.target.value
               )
             }
-            className="rounded-lg border p-2 font-bold"
+            className="p-2 font-bold border rounded-lg"
           >
             <option value="">--Select--</option>
             <option value="Physical lectures">Physical lectures</option>
@@ -139,6 +141,23 @@ const create = ({ facilitators, categories }) => {
             changeData={setData}
           />
 
+          <div className="flex flex-col w-full gap-2 lg:flex-row lg:gap-5">
+            <TextInput
+              id="startDate"
+              label="Enter start date"
+              value={data.startDate}
+              changeData={setData}
+              type="date"
+            />
+            <TextInput
+              id="endDate"
+              label="Enter end date"
+              value={data.endDate}
+              changeData={setData}
+              type="date"
+            />
+          </div>
+
           <label className="pl-2" htmlFor="level">
             Enter level
           </label>
@@ -152,7 +171,7 @@ const create = ({ facilitators, categories }) => {
                 e.target.value
               )
             }
-            className="rounded-lg border p-2 font-bold"
+            className="p-2 font-bold border rounded-lg"
           >
             <option value="">--Select--</option>
             <option value="beginner">Beginner</option>
@@ -174,7 +193,7 @@ const create = ({ facilitators, categories }) => {
             multiple
             value={selectedFacilitatorsOptions}
             onChange={handleSelectFacilitatorsChange}
-            className="rounded-lg border p-2 font-bold"
+            className="p-2 font-bold border rounded-lg"
           >
             {facilitators ? (
               facilitators.map((facilitator) => (
@@ -195,7 +214,7 @@ const create = ({ facilitators, categories }) => {
             value={data.category}
             // @ts-ignore
             onChange={(e) => setData('category', e.target.value)}
-            className="rounded-lg border p-2 font-bold"
+            className="p-2 font-bold border rounded-lg"
           >
             <option value="">--Select--</option>
             {categories ? (
@@ -234,7 +253,7 @@ const create = ({ facilitators, categories }) => {
             <button
               onClick={handleAddInput}
               disabled={topicFields.length === 19}
-              className="w-fit rounded-lg bg-primary p-2 text-sm text-white hover:bg-primary/80 lg:text-base"
+              className="p-2 text-sm text-white rounded-lg w-fit bg-primary hover:bg-primary/80 lg:text-base"
             >
               Add Topic
             </button>
@@ -242,7 +261,7 @@ const create = ({ facilitators, categories }) => {
             <button
               onClick={handleRemoveInput}
               disabled={topicFields.length === 19}
-              className="w-fit rounded-lg bg-primary p-2 text-sm text-white hover:bg-primary/80 lg:text-base"
+              className="p-2 text-sm text-white rounded-lg w-fit bg-primary hover:bg-primary/80 lg:text-base"
             >
               Remove Topic
             </button>
@@ -250,7 +269,7 @@ const create = ({ facilitators, categories }) => {
 
           <button
             type="submit"
-            className="w-fit rounded-lg border bg-primary p-2 text-sm text-white hover:bg-primary/80 lg:text-base"
+            className="p-2 text-sm text-white border rounded-lg w-fit bg-primary hover:bg-primary/80 lg:text-base"
           >
             Submit Course
           </button>
