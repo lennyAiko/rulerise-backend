@@ -37,13 +37,11 @@ module.exports.sockets = {
    * https://sailsjs.com/config/sockets#?beforeconnect                        *
    *                                                                          *
    ***************************************************************************/
-  // beforeConnect: function(handshake, proceed) {
-  //
-  //   // `true` allows the socket to connect.
-  //   // (`false` would reject the connection)
-  //   return proceed(undefined, true);
-  //
-  // },
+  beforeConnect: function (handshake, proceed) {
+    // `true` allows the socket to connect.
+    // (`false` would reject the connection)
+    return proceed(undefined, true)
+  },
   /***************************************************************************
    *                                                                          *
    * `afterDisconnect`                                                        *
