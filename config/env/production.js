@@ -48,8 +48,8 @@ module.exports = {
       // adapter: require('sails-mysql'),
       // url: 'mysql://user:password@host:port/database',
       adapter: require('sails-mongo'),
-      // url: process.env.DB_URL,
-      url: 'mongodb://localhost:27017/rulerise',
+      url: process.env.DB_URL,
+      // url: 'mongodb://localhost:27017/rulerise',
     },
     // cache: {
     //   adapter: 'sails-redis',
@@ -189,9 +189,9 @@ module.exports = {
 
     secret: process.env.REDIS_SECRET,
     adapter: '@sailshq/connect-redis',
-    // url: process.env.REDIS_URL,
+    url: process.env.REDIS_URL,
 
-    url: 'redis://localhost:6379',
+    // url: 'redis://localhost:6379',
     cookie: {
       // secure: true,
       maxAge: 24 * 60 * 60 * 1000, // 24 hours
