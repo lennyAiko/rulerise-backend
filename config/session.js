@@ -17,9 +17,9 @@ module.exports.session = {
    * of your users, forcing them to log in again.                             *
    *                                                                          *
    ***************************************************************************/
-  secret: '1691d5b059def6240b9bd80235d132dc',
-  adapter: '@sailshq/connect-redis',
-  url: 'redis://localhost:6379',
+  // secret: '1691d5b059def6240b9bd80235d132dc',
+  // adapter: '@sailshq/connect-redis',
+  // url: 'redis://155.138.132.128:6379',
   // secret: process.env.REDIS_SECRET,
   // adapter: '@sailshq/connect-redis',
   // url: process.env.REDIS_URL,
