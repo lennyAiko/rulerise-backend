@@ -78,7 +78,7 @@ const update = ({ career }) => {
         />
 
         <TextareaInput
-          label="Enter day to day instructions"
+          label="Enter day to day instructions (responsibilities)"
           value={data.dayToDay}
           changeData={setData}
           id="dayToDay"

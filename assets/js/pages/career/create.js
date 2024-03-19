@@ -15,6 +15,7 @@ export default function Create() {
     locationAndFormat: '',
     dayToDay: '',
     skillSet: '',
+    status: '',
   })
 
   useEffect(() => {
@@ -56,7 +57,7 @@ export default function Create() {
           <select
             id="jobType"
             value={data.jobType}
-            className="rounded-lg border p-2 font-bold"
+            className="p-2 font-bold border rounded-lg"
             // @ts-ignore
             onChange={(e) => setData('jobType', e.target.value)}
           >
@@ -64,6 +65,21 @@ export default function Create() {
             <option value="full-time">Full-time</option>
             <option value="remote">Remote</option>
             <option value="hybrid">Hybrid</option>
+          </select>
+
+          <label className="pl-2" htmlFor="learning">
+            Enter status of job
+          </label>
+          <select
+            id="status"
+            value={data.status}
+            className="p-2 font-bold border rounded-lg"
+            // @ts-ignore
+            onChange={(e) => setData('status', e.target.value)}
+          >
+            <option>--choose job status--</option>
+            <option value="open">Open</option>
+            <option value="closed">Closed</option>
           </select>
 
           <TextareaInput
