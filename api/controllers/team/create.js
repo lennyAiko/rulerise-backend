@@ -28,7 +28,7 @@ module.exports = {
   },
 
   fn: async function ({ name, img, title }) {
-    await Teams.create({ name, image, title })
+    await Teams.create({ name, img, title })
 
     // All done.
     return '/teams'

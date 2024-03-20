@@ -20,7 +20,7 @@ export default function Index({ teams }) {
               <div className="mt-2 flex items-center justify-between text-sm font-light lg:text-base">
                 <p>{team.name}</p>
                 <Link
-                  href={`/trams/${team.id}`}
+                  href={`/teams/${team.id}`}
                   className="rounded-lg bg-primary px-2 py-0.5 text-white"
                 >
                   view
