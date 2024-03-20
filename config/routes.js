@@ -34,6 +34,14 @@ module.exports.routes = {
   'GET /category/:id': 'category/view-update',
   'DELETE /category/:id': 'category/delete',
 
+  // Teams
+  'POST /teams/create': 'team/create',
+  'GET /teams/create': 'team/view-create',
+  'GET /teams': 'team/fetch',
+  'PATCH /teams/:id': 'team/update',
+  'GET /teams/:id': 'team/view-update',
+  'DELETE /teams/:id': 'team/delete',
+
   // Career
   'POST /career/create': 'career/create',
   'GET /career/create': 'career/view-create',
@@ -105,6 +113,7 @@ module.exports.routes = {
   'GET /api/courses': 'courses/api/fetch',
   'GET /api/courses/:id': 'courses/api/view',
   'GET /api/categories': 'category/api/fetch',
+  'GET /api/teams': 'teams/api/fetch',
   'GET /api/careers': 'career/api/fetch',
   'GET /api/careers/:id': 'career/api/view',
   'GET /api/careers/filter': 'career/api/filter',
