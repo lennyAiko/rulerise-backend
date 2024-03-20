@@ -113,7 +113,7 @@ module.exports.routes = {
   'GET /api/courses': 'courses/api/fetch',
   'GET /api/courses/:id': 'courses/api/view',
   'GET /api/categories': 'category/api/fetch',
-  'GET /api/teams': 'teams/api/fetch',
+  'GET /api/teams': 'team/api/fetch',
   'GET /api/careers': 'career/api/fetch',
   'GET /api/careers/:id': 'career/api/view',
   'GET /api/careers/filter': 'career/api/filter',

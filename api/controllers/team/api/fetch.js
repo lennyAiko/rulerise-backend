@@ -13,7 +13,7 @@ module.exports = {
 
     try {
       // @ts-ignore
-      categories = await Teams.find({})
+      teams = await Teams.find({})
       message = 'Successfully fetched teams'
     } catch (err) {
       console.log(err)
