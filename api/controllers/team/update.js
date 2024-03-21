@@ -25,10 +25,10 @@ module.exports = {
     success: {},
   },
 
-  fn: async function ({ name, image, title }, exits) {
+  fn: async function ({ name, img, title }, exits) {
     const category = await Teams.updateOne({ id: this.req.params.id }).set({
       name,
-      image,
+      img,
       title,
     })
 
