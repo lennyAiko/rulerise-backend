@@ -15,5 +15,5 @@ module.exports.inertia = {
    *  or a function that returns the said string, number.
    * e.g 4 or () => 4
    */
-  version: () => Math.floor(Math.random() * 50),
+  version: () => Math.floor(Math.random() * 500),
 }
