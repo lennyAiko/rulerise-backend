@@ -2,7 +2,7 @@
 module.exports = {
   friendlyName: 'Update',
 
-  description: 'Update teams.',
+  description: 'Update testimonials.',
 
   inputs: {
     name: {
@@ -10,7 +10,7 @@ module.exports = {
       required: true,
     },
 
-    title: {
+    description: {
       type: 'string',
       required: true,
     },
@@ -25,13 +25,15 @@ module.exports = {
     success: {},
   },
 
-  fn: async function ({ name, img, title }, exits) {
-    const team = await Teams.updateOne({ id: this.req.params.id }).set({
+  fn: async function ({ name, img, description }, exits) {
+    const testimonial = await Testimonials.updateOne({
+      id: this.req.params.id,
+    }).set({
       name,
       img,
-      title,
+      description,
     })
 
-    return sails.inertia.location('/teams')
+    return sails.inertia.location('/testimonials')
   },
 }

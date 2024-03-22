@@ -42,6 +42,14 @@ module.exports.routes = {
   'GET /teams/:id': 'team/view-update',
   'DELETE /teams/:id': 'team/delete',
 
+  // Testimonials
+  'POST /testimonials/create': 'testimonial/create',
+  'GET /testimonials/create': 'testimonial/view-create',
+  'GET /testimonials': 'testimonial/fetch',
+  'PATCH /testimonials/:id': 'testimonial/update',
+  'GET /testimonials/:id': 'testimonial/view-update',
+  'DELETE /testimonials/:id': 'testimonial/delete',
+
   // Career
   'POST /career/create': 'career/create',
   'GET /career/create': 'career/view-create',
@@ -114,6 +122,7 @@ module.exports.routes = {
   'GET /api/courses/:id': 'courses/api/view',
   'GET /api/categories': 'category/api/fetch',
   'GET /api/teams': 'team/api/fetch',
+  'GET /api/testimonials': 'testimonial/api/fetch',
   'GET /api/careers': 'career/api/fetch',
   'GET /api/careers/:id': 'career/api/view',
   'GET /api/careers/filter': 'career/api/filter',
