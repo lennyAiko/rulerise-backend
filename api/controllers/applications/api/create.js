@@ -113,11 +113,13 @@ module.exports = {
       url = await sails.helpers.paymentUrl(course.priceId)
     }
 
-    // All done.
-    return exits.success({
+    const payload = {
       status: 200,
       message: 'Successfully created an application.',
-      url: url || null,
-    })
+      url: url,
+    }
+
+    // All done.
+    return exits.success(payload)
   },
 }
