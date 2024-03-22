@@ -92,15 +92,15 @@ module.exports = {
     }
 
     // @ts-ignore
-    // await sails.helpers.sendEmail(
-    //   {
-    //     fullName: `${firstName} ${lastName}`,
-    //     course: course.title,
-    //   },
-    //   'Application Received',
-    //   'email-application-notification',
-    //   false
-    // )
+    await sails.helpers.sendEmail(
+      {
+        fullName: `${firstName} ${lastName}`,
+        course: course.title,
+      },
+      'Application Received',
+      'email-application-notification',
+      false
+    )
 
     this.req.session.application = {
       fullName: `${firstName} ${lastName}`,

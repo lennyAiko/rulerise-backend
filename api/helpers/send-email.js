@@ -34,10 +34,10 @@ module.exports = {
     // TODO
 
     const emails = [
-      // 'adebayooluyemi4@gmail.com',
-      // 'bolafunmi@yahoo.com',
+      'adebayooluyemi4@gmail.com',
+      'bolafunmi@yahoo.com',
       'lennyaiko17@gmail.com',
-      // 'care@rulerise.com',
+      'care@rulerise.com',
     ]
 
     try {
