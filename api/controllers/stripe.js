@@ -5,14 +5,19 @@ module.exports = {
 
   description: 'Stripe something.',
 
-  inputs: {},
+  inputs: {
+    priceId: {
+      type: 'string',
+      required: true,
+    },
+  },
 
   exits: {},
 
   fn: async function (inputs) {
-    const stripeUrl = await sails.helpers.paymentUrl(process.env.AGILE_SCRUM_ID)
+    const stripeUrl = await sails.helpers.paymentUrl(inputs.priceId)
 
     // All done.
-    return 'ok'
+    return stripeUrl
   },
 }

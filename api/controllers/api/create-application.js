@@ -32,7 +32,7 @@ module.exports = {
     // reference: {
     //   type: 'string',
     // },
-    courseId: {
+    priceId: {
       type: 'string',
       required: true,
     },
@@ -58,7 +58,7 @@ module.exports = {
       // experience,
       // educationalBackground,
       // reference,
-      courseId,
+      priceId,
     },
     exits
   ) {
@@ -83,7 +83,7 @@ module.exports = {
 
     // @ts-ignore
     const course = await Courses.findOne({
-      id: courseId,
+      priceId,
     })
 
     if (!course) {
@@ -110,7 +110,7 @@ module.exports = {
     // }
 
     let url
-    if (courseId.length > 0) {
+    if (priceId.length > 0) {
       // @ts-ignore
       url = await sails.helpers.paymentUrl(course.priceId)
     }

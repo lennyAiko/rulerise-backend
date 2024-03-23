@@ -17,19 +17,7 @@ module.exports.policies = {
    ***************************************************************************/
   '*': true,
   // Auth
-  'auth/signin': true,
-  'auth/signup': true,
-  'auth/view-signin': true,
-  'auth/view-signup': true,
-
-  'applications/api/create': true,
-  'category/api/fetch': true,
-  'contact/api/create': true,
-  'courses/api/fetch': true,
-  'courses/api/view': true,
-  'facilitators/api/fetch': true,
-  'faqs/api/fetch': true,
-  'talent/api/create': true,
+  'auth/*': true,
 
   'dashboard/*': ['share-path', 'is-authenticated', 'is-approved'],
   'applications/*': ['share-path', 'is-authenticated', 'is-approved'],
