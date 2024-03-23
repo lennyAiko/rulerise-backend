@@ -133,6 +133,7 @@ module.exports.routes = {
   'POST /api/applications': 'api/create-application',
   'POST /api/contacts': 'api/create-contact',
   'POST /api/talents': 'api/create-talent',
-  'POST /api/stripe': 'stripe',
+  'POST /api/stripe': 'api/stripe',
   'POST /api/emails': 'api/create-emails',
+  'POST /api/send-mail': 'api/send-mail',
 }
