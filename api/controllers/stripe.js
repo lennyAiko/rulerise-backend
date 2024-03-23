@@ -18,6 +18,6 @@ module.exports = {
     const stripeUrl = await sails.helpers.paymentUrl(inputs.priceId)
 
     // All done.
-    return stripeUrl
+    return { url: stripeUrl }
   },
 }

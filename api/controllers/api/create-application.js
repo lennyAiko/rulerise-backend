@@ -109,16 +109,16 @@ module.exports = {
     //   course: course.title,
     // }
 
-    let url
-    if (priceId.length > 0) {
-      // @ts-ignore
-      url = await sails.helpers.paymentUrl(course.priceId)
-    }
+    // let url
+    // if (priceId.length > 0) {
+    //   // @ts-ignore
+    //   url = await sails.helpers.paymentUrl(course.priceId)
+    // }
 
     const payload = {
       status: 200,
       message: 'Successfully created an application.',
-      url: url,
+      // url: url,
     }
 
     // All done.
