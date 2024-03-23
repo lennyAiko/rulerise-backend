@@ -4,6 +4,8 @@ module.exports = {
 
   description: 'Create api.',
 
+  simulateLatency: 5000,
+
   inputs: {
     firstName: {
       type: 'string',
