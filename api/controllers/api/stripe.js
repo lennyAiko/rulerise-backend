@@ -10,12 +10,25 @@ module.exports = {
       type: 'string',
       required: true,
     },
+    firstName: {
+      type: 'string',
+      required: true,
+    },
+    courseTitle: {
+      type: 'string',
+      required: true,
+    },
   },
 
   exits: {},
 
-  fn: async function (inputs) {
-    const stripeUrl = await sails.helpers.paymentUrl(inputs.priceId)
+  fn: async function ({ priceId, firstName, courseTitle }) {
+    // @ts-ignore
+    const stripeUrl = await sails.helpers.paymentUrl(
+      priceId,
+      firstName,
+      courseTitle
+    )
 
     // All done.
     return { url: stripeUrl }

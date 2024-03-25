@@ -13,6 +13,14 @@ module.exports = {
       type: 'string',
       required: true,
     },
+    firstName: {
+      type: 'string',
+      required: true,
+    },
+    course: {
+      type: 'string',
+      required: true,
+    },
   },
 
   exits: {
@@ -22,6 +30,12 @@ module.exports = {
   },
 
   fn: async function (inputs) {
+    const customer = await stripe.customers.create({
+      metadata: {
+        firstName: inputs.firstName,
+        course: JSON.stringify(inputs.course),
+      },
+    })
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       mode: 'payment',
@@ -31,6 +45,7 @@ module.exports = {
           quantity: 1,
         },
       ],
+      customer: customer.id,
       success_url: process.env.SUCCESS_URL,
       cancel_url: process.env.CANCEL_URL,
     })

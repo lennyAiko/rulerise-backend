@@ -1,3 +1,5 @@
+const bodyParser = require('body-parser')
+
 /**
  * HTTP Server Settings
  * (sails.config.http)
@@ -26,9 +28,19 @@ module.exports.http = {
      * (This Sails app's routes are handled by the "router" middleware below.)  *
      *                                                                          *
      ***************************************************************************/
+
+    rawBodyParser: function (req, res, next) {
+      if (req.url === '/api/webhook') {
+        bodyParser.raw({ type: '*/*' })(req, res, next)
+      } else {
+        next()
+      }
+    },
+
     order: [
       'cookieParser',
       'session',
+      'rawBodyParser',
       'bodyParser',
       'compress',
       'poweredBy',
@@ -45,8 +57,13 @@ module.exports.http = {
      ***************************************************************************/
     bodyParser: (function _configureBodyParser() {
       var skipper = require('skipper')
-      var middlewareFn = skipper({ strict: true })
+      var middlewareFn = skipper({
+        strict: true,
+        includeRawBody: true,
+        stream: true,
+      })
       return middlewareFn
     })(),
   },
 }
+// return bodyParser.raw({ type: '*/*' })

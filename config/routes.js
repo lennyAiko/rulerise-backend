@@ -136,4 +136,5 @@ module.exports.routes = {
   'POST /api/stripe': 'api/stripe',
   'POST /api/emails': 'api/create-emails',
   'POST /api/send-mail': 'api/send-mail',
+  'POST /api/webhook': 'api/webhook',
 }
