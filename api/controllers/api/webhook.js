@@ -28,24 +28,72 @@ module.exports = {
 
   description: 'Webhook api.',
 
-  inputs: {},
+  inputs: {
+    id: {
+      type: 'string',
+      description: 'The unique identifier for this Stripe event.',
+      moreInfoUrl: 'https://stripe.com/docs/api/events/object#event_object-id',
+      required: true,
+    },
+    type: {
+      type: 'string',
+      description: 'The type of this Stripe event.',
+      moreInfoUrl:
+        'https://stripe.com/docs/api/events/object#event_object-type',
+      required: true,
+    },
+    data: {
+      type: { object: {} },
+      description:
+        'An object containing data associated with this Stripe event.',
+      moreInfoUrl:
+        'https://stripe.com/docs/api/events/object#event_object-data',
+      required: true,
+    },
+    webhookSecret: {
+      type: 'string',
+      description: 'Used to verify that requests are coming from Stripe.',
+      required: true,
+    },
+  },
 
-  exits: {},
+  exits: {
+    success: {},
+    missingHeader: {
+      responseType: 'unauthorized',
+    },
+  },
 
   fn: async function (inputs) {
     const req = this.req
     const res = this.res
 
+    sails.log(inputs)
+
+    if (!this.req.get('stripe-signature')) {
+      throw 'missingStripeHeader'
+    }
+
+    if (!endpointSecret) {
+      throw new Error('No Stripe webhook secret configured!')
+    }
+
+    if (endpointSecret !== inputs.webhookSecret) {
+      throw new Error(
+        'Received unexpected Stripe webhook request with webhookSecret set to: ' +
+          inputs.webhookSecret
+      )
+    }
+
     // sails.log('headers', req.headers)
     // sails.log('body', req.body)
-    const rawBody = req.body.toString()
 
     const sig = req.headers['stripe-signature']
 
     let event
 
     try {
-      event = stripe.webhooks.constructEvent(rawBody, sig, endpointSecret)
+      event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret)
     } catch (err) {
       res.status(400).send(`Webhook Error: ${err.message}`)
       return
@@ -54,7 +102,6 @@ module.exports = {
     if (event.type === 'checkout.session.completed') {
     }
 
-    let mostRecentApplication
     switch (event.type) {
       case 'payment_intent.succeeded':
         const paymentIntentSucceeded = event.data.object
