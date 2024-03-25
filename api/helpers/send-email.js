@@ -4,13 +4,13 @@ module.exports = {
   description: '',
 
   inputs: {
+    to: {
+      type: 'string',
+      required: true,
+    },
     templateData: {
       type: 'json',
     },
-    // to: {
-    //   type: 'ref',
-    //   required: true,
-    // },
     subject: {
       type: 'string',
       required: true,
@@ -42,7 +42,7 @@ module.exports = {
 
     try {
       await sails.helpers.mail.send.with({
-        to: 'bolafunmi@gmail.com',
+        to: inputs.to,
         subject: inputs.subject,
         template: inputs.template,
         templateData: inputs.templateData,

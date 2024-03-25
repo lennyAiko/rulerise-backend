@@ -32,16 +32,16 @@ const view = ({ application }) => {
 
         <div className="col-span-full grid grid-cols-4 items-center md:col-span-4 lg:col-start-2">
           <div className="col-span-2 text-sm md:col-span-3 lg:text-base">
-            <p>Location:</p>
-            <p className="font-bold">{application.location}</p>
+            <p>Application status:</p>
+            <p className="font-bold">{application.status}</p>
           </div>
-          <div className="col-span-2 text-sm md:col-span-1 lg:text-base">
+          {/* <div className="col-span-2 text-sm md:col-span-1 lg:text-base">
             <p>Experience:</p>
             <p className="font-bold">{application.experience}</p>
-          </div>
+          </div> */}
         </div>
 
-        <div className="col-span-full grid grid-cols-4 items-center md:col-span-4 lg:col-start-2">
+        {/* <div className="grid items-center grid-cols-4 col-span-full md:col-span-4 lg:col-start-2">
           <div className="col-span-2 text-sm md:col-span-3 lg:text-base">
             <p>Educational Background:</p>
             <p className="font-bold">{application.educationalBackground}</p>
@@ -49,8 +49,8 @@ const view = ({ application }) => {
           <div className="col-span-2 text-sm md:col-span-1 lg:text-base">
             <p>Reference:</p>
             <p className="font-bold">{application.reference}</p>
-          </div>
-        </div>
+          </div> 
+        </div>*/}
 
         {/* <button
           onClick={(e) => {

@@ -23,6 +23,7 @@ module.exports = {
   fn: async function ({ firstName, lastName, priceId }) {
     const course = await Courses.findOne({ priceId })
     await sails.helpers.sendEmail(
+      'bolafunmi@gmail.com',
       {
         fullName: `${firstName} ${lastName}`,
         course: course.title,

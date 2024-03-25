@@ -21,6 +21,10 @@ module.exports = {
       type: 'string',
       required: true,
     },
+    email: {
+      type: 'string',
+      required: true,
+    },
   },
 
   exits: {
@@ -33,7 +37,8 @@ module.exports = {
     const customer = await stripe.customers.create({
       metadata: {
         firstName: inputs.firstName,
-        course: JSON.stringify(inputs.course),
+        course: inputs.course,
+        email: inputs.email,
       },
     })
     const session = await stripe.checkout.sessions.create({

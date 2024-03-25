@@ -45,6 +45,7 @@ module.exports = {
 
     // @ts-ignore
     await sails.helpers.sendEmail(
+      'bolafunmi@gmail.com',
       {
         contact: details,
       },

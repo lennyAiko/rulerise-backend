@@ -23,6 +23,11 @@ module.exports = {
       type: 'string',
       isEmail: true,
     },
+    status: {
+      type: 'string',
+      isIn: ['pending', 'accepted', 'rejected'],
+      defaultsTo: 'pending',
+    },
     // location: {
     //   type: 'string',
     // },
