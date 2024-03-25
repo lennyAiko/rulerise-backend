@@ -29,18 +29,18 @@ module.exports.http = {
      *                                                                          *
      ***************************************************************************/
 
-    rawBodyParser: function (req, res, next) {
-      if (req.url === '/api/webhook') {
-        bodyParser.raw({ type: '*/*' })(req, res, next)
-      } else {
-        next()
-      }
-    },
+    // rawBodyParser: function (req, res, next) {
+    //   if (req.url === '/api/webhook') {
+    //     bodyParser.raw({ type: '*/*' })(req, res, next)
+    //   } else {
+    //     next()
+    //   }
+    // },
 
     order: [
       'cookieParser',
       'session',
-      'rawBodyParser',
+      // 'rawBodyParser',
       'bodyParser',
       'compress',
       'poweredBy',
