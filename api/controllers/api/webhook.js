@@ -33,14 +33,14 @@ module.exports = {
       type: 'string',
       description: 'The unique identifier for this Stripe event.',
       moreInfoUrl: 'https://stripe.com/docs/api/events/object#event_object-id',
-      required: true,
+      // required: true,
     },
     type: {
       type: 'string',
       description: 'The type of this Stripe event.',
       moreInfoUrl:
         'https://stripe.com/docs/api/events/object#event_object-type',
-      required: true,
+      // required: true,
     },
     data: {
       type: { object: {} },
@@ -48,12 +48,12 @@ module.exports = {
         'An object containing data associated with this Stripe event.',
       moreInfoUrl:
         'https://stripe.com/docs/api/events/object#event_object-data',
-      required: true,
+      // required: true,
     },
     webhookSecret: {
       type: 'string',
       description: 'Used to verify that requests are coming from Stripe.',
-      required: true,
+      // required: true,
     },
   },
 
@@ -68,9 +68,7 @@ module.exports = {
     const req = this.req
     const res = this.res
 
-    sails.log(inputs)
-
-    if (!this.req.get('stripe-signature')) {
+    if (!req.get('stripe-signature')) {
       throw 'missingStripeHeader'
     }
 
@@ -85,26 +83,26 @@ module.exports = {
       )
     }
 
-    // sails.log('headers', req.headers)
-    // sails.log('body', req.body)
+    const stripeData = inputs.data.object
 
-    const sig = req.headers['stripe-signature']
+    // const sig = req.get('stripe-signature')
 
-    let event
+    // let event
 
-    try {
-      event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret)
-    } catch (err) {
-      res.status(400).send(`Webhook Error: ${err.message}`)
-      return
-    }
+    // try {
+    //   event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret)
+    // } catch (err) {
+    //   res.status(400).send(`Webhook Error: ${err.message}`)
+    //   return
+    // }
 
-    if (event.type === 'checkout.session.completed') {
-    }
+    // if (event.type === 'checkout.session.completed') {
 
-    switch (event.type) {
+    // }
+
+    switch (inputs.type) {
       case 'payment_intent.succeeded':
-        const paymentIntentSucceeded = event.data.object
+        const paymentIntentSucceeded = stripeData
         stripe.customers
           .retrieve(paymentIntentSucceeded.customer)
           .then(async (customer) => {
@@ -128,6 +126,8 @@ module.exports = {
               false
             )
 
+            sails.log('sent mail')
+
             Application.find({
               where: { firstName: customer.metadata.firstName },
               sort: 'createdAt DESC',
@@ -141,7 +141,7 @@ module.exports = {
           })
         break
       case 'payment_intent.payment_failed':
-        const paymentIntentFailed = event.data.object
+        const paymentIntentFailed = stripeData
         stripe.customers
           .retrieve(paymentIntentFailed.customer)
           .then(async (customer) => {
@@ -174,7 +174,7 @@ module.exports = {
           })
         break
       default:
-        console.log(`Unhandled event type ${event.type}`)
+        console.log(`Unhandled event type ${inputs.type}`)
     }
 
     // All done.

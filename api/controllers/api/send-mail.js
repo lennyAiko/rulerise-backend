@@ -12,7 +12,7 @@ module.exports = {
       type: 'string',
       required: true,
     },
-    priceId: {
+    title: {
       type: 'string',
       required: true,
     },
@@ -20,13 +20,13 @@ module.exports = {
 
   exits: {},
 
-  fn: async function ({ firstName, lastName, priceId }) {
-    const course = await Courses.findOne({ priceId })
+  fn: async function ({ firstName, lastName, title }) {
+    // const course = await Courses.findOne({ priceId })
     await sails.helpers.sendEmail(
       'bolafunmi@gmail.com',
       {
         fullName: `${firstName} ${lastName}`,
-        course: course.title,
+        course: title,
       },
       'Application Received',
       'email-application-notification',
