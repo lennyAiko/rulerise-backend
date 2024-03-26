@@ -7,7 +7,7 @@ export default function Index({ addons }) {
     <AddonLayout>
       <div className="flex flex-col gap-2">
         <div className="flex items-center gap-2">
-          <h1 className="my-2 mb-2 font-bold">addon</h1>
+          <h1 className="my-2 mb-2 font-bold">Addon</h1>
 
           <Link href="/addon/create" className="w-fit p-1">
             <TiPlus />

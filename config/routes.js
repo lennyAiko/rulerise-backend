@@ -34,6 +34,14 @@ module.exports.routes = {
   'GET /category/:id': 'category/view-update',
   'DELETE /category/:id': 'category/delete',
 
+  // Addons
+  'POST /addon/create': 'addon/create',
+  'GET /addon/create': 'addon/view-create',
+  'GET /addon': 'addon/fetch',
+  'PATCH /addon/:id': 'addon/update',
+  'GET /addon/:id': 'addon/view-update',
+  'DELETE /addon/:id': 'addon/delete',
+
   // Teams
   'POST /teams/create': 'team/create',
   'GET /teams/create': 'team/view-create',
@@ -128,6 +136,7 @@ module.exports.routes = {
   'GET /api/careers/filter': 'api/filter-careers',
   'GET /api/faqs': 'api/fetch-faqs',
   'GET /api/facilitators': 'api/fetch-facilitators',
+  'GET /api/addons': 'api/fetch-addon',
   'GET /api/articles': 'api/fetch-articles',
   'GET /api/articles/:id': 'api/view-article',
   'POST /api/applications': 'api/create-application',
