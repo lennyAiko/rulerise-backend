@@ -126,8 +126,6 @@ module.exports = {
               false
             )
 
-            sails.log('sent mail')
-
             Application.find({
               where: { firstName: customer.metadata.firstName },
               sort: 'createdAt DESC',
